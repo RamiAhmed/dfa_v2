@@ -122,6 +122,7 @@ function exitGAAnalytics() {
     gaPlugin.exit(function() {
         console.log("GA exited succesfully");
     }, function(error) {
+        navigator.notification.alert('GA exit error: ' + error);
         console.log("GA reported error: " + error);
     });
 }
