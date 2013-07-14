@@ -114,7 +114,7 @@ function exitGAAnalytics() {
         console.log("GA exited succesfully");
     }, function(error) {
         console.log("GA reported error: " + error);
-    })
+    });
 }
 
 /* SWIPING */
