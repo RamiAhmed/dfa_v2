@@ -189,6 +189,9 @@ var fireOnce = false;
 $.ui.ready(function () {
     new FastClick(document.body);
 
+    initIndexPage();
+    initAutoFontSize();
+
     loadPage('tilbudform.html', '#indhenttilbud');
     loadPage('kontaktform.html', '#kontaktform');
     loadPage('prisliste.html', '#kasseprisliste');
@@ -198,13 +201,12 @@ $.ui.ready(function () {
         openPDF();
     });
 
-    initIndexPage();
     initMaps();
-    initFormHandler();
     initBackButton();
     initGAanalytics();
     initSwiping();
-    initAutoFontSize();
+    initFormHandler();
+
 });
 
 /* This code is used for native apps */
