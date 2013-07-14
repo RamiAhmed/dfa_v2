@@ -58,7 +58,10 @@ function initIndexPage() {
 /* BACK BUTTON */
 function onExitConfirm(button) {
     if (button == 1) {
-        navigator.app.exitApp();
+        exitGAAnalytics();
+        window.setTimeout(function() {
+            navigator.app.exitApp();
+        }, 500);
     }
 }
 
@@ -72,6 +75,47 @@ function initBackButton() {
 
 /* Google Analytics Page Tracking */
 
+function initGAanalytics() {
+    function gaSuccessHandler() {
+        $('#afui .panel').on('loadpanel', function() {
+            var page = location.hash.substring(1);
+            if (page && page.length > 1) {
+                gaPlugin.trackPage(function(){
+                    //on success
+                    console.log("tracked " + page);
+                }, function(error){
+                    // on error
+                    console.log("could not track " + page + "\n error: " + error);
+                }, page);
+            }
+            else {
+                gaPlugin.trackPage(function(){
+                    //on success
+                    console.log("tracked " + page);
+                }, function(error){
+                    // on error
+                    console.log("could not track " + page + "\n error: " + error);
+                }, '/index');
+            }
+        });
+    }
+
+    function gaErrorHandler(error) {
+        navigator.notification.alert("Google analytics error: " + error);
+    }
+
+
+    gaPlugin = window.plugins.gaPlugin;
+    gaPlugin.init(gaSuccessHandler, gaErrorHandler, "UA-42432888-1", 10);
+}
+
+function exitGAAnalytics() {
+    gaPlugin.exit(function() {
+        console.log("GA exited succesfully");
+    }, function(error) {
+        console.log("GA reported error: " + error);
+    })
+}
 
 /* SWIPING */
 function initSwiping() {
