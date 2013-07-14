@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html lang="da">
+    <head>
+        <title>Danmarks Flyttemand App</title>
+
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+
+        <link rel="stylesheet" type="text/css" href="css/icons.css">
+        <link rel="stylesheet" type="text/css" href="css/af.ui.css">
+
+        <script src="phonegap.js"></script>
+
+        <script type="text/javascript" src="js/libs/GALocalStorage.js"></script>
+        <script type="text/javascript">
+            ga_storage._setAccount('UA-42432888-1');
+            ga_storage._setDomain('none');
+            ga_storage._trackPageview('/index', 'First Page');
+        </script>
+    </head>
+
+    <body>
+
+
+
+        <div id="afui">
+
+            <div id="splashscreen">
+                <img src="splash/android/xhdpi.9.png" width='100%' height='100%'  alt="Splashscreen">
+            </div>
+
+            <div id="header">
+                <h1 id="pageTitle">Page Title</h1>
+            </div> <!-- /header -->
+
+            <div id="content">
+                <div id="index" class="panel" selected="true">
+                    <a href="http://www.danmarksflyttemand.dk" data-ignore="true">
+                        <img id="indexlogo" src="img/DFA_Logo_hd.png" alt="Danmarks Flyttemand ApS" />
+                    </a>
+
+                    <section id="frontbox1" class="frontbox">
+                        <a href="#services">
+                            <img class="boximg" src="img/endbox-flyttekasser.png" alt="Services">
+                            <h1 class="boxtext">Services</h1>
+                        </a>
+                    </section>
+
+                    <section id="frontbox2" class="frontbox">
+                        <a href="#tilbud">
+                            <img class="boximg" src="img/endbox-pri-erh.png" alt="Flytning">
+                            <h1 class="boxtext">Flytning</h1>
+                        </a>
+                    </section>
+
+                    <section id="frontbox3" class="frontbox">
+                        <a href="#kontakt">
+                            <img class="boximg" src="img/contact.png" alt="Kontakt">
+                            <h1 class="boxtext">Kontakt</h1>
+                        </a>
+                    </section>
+
+                    <section id="frontbox4" class="frontbox">
+                        <a href="#omos">
+                            <img class="boximg" src="img/DanmarksFlytteman.png" alt="Om Os">
+                            <h1 class="boxtext">Om Os</h1>
+                        </a>
+                    </section>
+                </div> <!-- /index -->
+
+
+                <div id="services" title="Services" class="panel" data-tab="nservices">
+                    <article class="tabcontainer">
+                        <h1>Flyttekasser</h1>
+
+                        <h2>Har du brug for flyttekasser?</h2>
+                        <p>
+                            Uanset om du skal leje flyttekasser til en enkelt flytning eller vil købe flyttekasser eller evt. beholde dem efterf&oslash;lgende, s&aring; har du muligheden hos os.
+                        </p>
+                        <p>
+                            Der er naturligvis tale om de bedste flyttekasser, nemlig de dobbelt h&aelig;ftede.
+                        </p>
+                        <h2>Priser p&aring; leje af flyttekasser inkl. moms</h2>
+
+                        <div id="kasseprisliste">Kasseprisliste</div>
+
+                        <h2>Vi har ogs&aring; nedpakningstilbeh&oslash;r </h2>
+                        <p>
+                            Bobleplast: 150,- kr. inkl moms. pr. rulle. <br />
+                            Silkepapir: 100,- kr. inkl moms. pr. rulle.
+                        </p>
+
+                        <hr />
+
+                        <h1>Rydning af d&oslash;dsbo</h1>
+
+                        <p>&nbsp;</p>
+                        <p>
+                            DanmarksFlyttemand k&oslash;ber d&oslash;dsbo, konkursbo, restboer p&aring; hele Sj&aelig;lland inkl. K&oslash;benhavn. Vi kan ogs&aring; hj&aelig;lpe med totalrydninger af boer.
+                        </p>
+                        <p>
+                            Vi tilbyder kontakt betaling for d&oslash;dsboet. Vi rydder  dern&aelig;st den aftalte bolig, lejlighed k&aelig;lder eller lignede.
+                        </p>
+
+                        <p>
+                            Der er ogs&aring; mulighed for at tilk&oslash;be  reng&oslash;ring, hvis d&oslash;dsboet tr&aelig;nger til en hovedreng&oslash;ring f&oslash;r et eventuelt salg. Udover reng&oslash;ringsservice tilbyder vi ogs&aring; hj&aelig;lp til praktiske opgaver i forbindelse med afvikling af d&oslash;dsboet.
+                        </p>
+                        <p>
+                            Skal du have ryddet et d&oslash;dsbo, konkursbo eller lignende, s&aring; ring til os allerede i dag p&aring; tlf.: 2054 5454.
+                        </p>
+
+                        <hr />
+
+                        <h1>Tilh&oslash;rende reng&oslash;ring</h1>
+
+                        <p>Udover selve flytningen tilbyder vi ogs&aring;:</p>
+                        <ul class="list inset">
+                          <li>Nedpakning af inventar</li>
+                          <li>Reng&oslash;ring samt klarg&oslash;ring af lejem&aring;l</li>
+                          <li>Trappevask</li>
+                          <li>Hovedreng&oslash;rringer</li>
+                        </ul>
+                        <p>&#8203;&#8203;Service er et af de omfang som ofte bliver taget forg&aelig;ves, i alles travle hverdag. </p>
+                        <p>Vi tilbyder ikke kun den bedste service, men ogs&aring; den bedste kvalitet indenfor reng&oslash;ring.</p>
+                    </article>
+                </div> <!-- /services -->
+
+
+                <div id="tilbud" title='Tilbud' class="panel" data-tab="ntilbud">
+                    <article class="tabcontainer">
+                        <div id="indhenttilbud">Indhent et tilbud</div>
+                    </article>
+                </div> <!-- /tilbud -->
+
+
+                <div id="kontakt" title='Kontakt' class="panel" data-tab="nkontakt">
+                    <article class="tabcontainer">
+                        <h1>Find vej til hovedkontoret</h1>
+                        <div id="googlemap" style="height: 350px; display: block;"></div>
+                        <div id="googledirections" style="height: 300px; margin-bottom: 25px; display: block; float:left;"></div>
+                        <button id="googlepanelbutton" class="button" >
+                            Vis/skjul rutebeskrivelse
+                        </button>
+
+                        <hr />
+
+                        <section id="kontaktcontainer">
+
+                            <section id="leftkontakt">
+                                <article>
+                                    <h2>Informationer</h2>
+                                    <p>
+                                        Danmarks Flyttemand ApS<br />
+                                        Godthåbsvej 132<br />
+                                        2000 Frederiksberg<br />
+                                        CVR: 35229191
+                                    </p>
+                                </article>
+
+                                <article>
+                                    <h2>Kontakt</h2>
+
+                                    <p>Ring til os på:</p>
+                                    <div id="phonebox-container">
+                                        <a id="phonebox" class="button" href="tel:+4520545454" data-ignore="true">20 54 54 54</a>
+                                    </div>
+
+                                    <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2FDanmarksflyttemand&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=145819772278581" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true"></iframe>
+                                </article>
+                            </section>
+
+                            <section id="rightkontakt">
+                                <article>
+                                    <h2>Telefon tider</h2>
+                                    <p>
+                                        Mandag - Fredag: 09:00 - 22:00<br />
+                                        Lørdag: 10:00 - 22:00</br />
+                                        Søndag: Lukket
+                                    </p>
+                                </article>
+
+                                <article>
+                                    <h2>Bank oplysninger</h2>
+                                    <p>
+                                        BRF Kredit<br />
+                                        Reg.: 6482<br />
+                                        Konto: 2677393
+                                    </p>
+                                </article>
+                            </section>
+
+                            <article id="bottomkontakt">
+                                    <a href="mailto:info@danmarksflyttemand.dk" data-ignore="true">info@danmarksflyttemand.dk</a>
+                            </article>
+
+                        </section>
+
+                        <hr />
+
+                        <div id="kontaktform">Kontaktform</div>
+                    </article>
+                </div><!-- /kontakt -->
+
+
+                <div id="omos" title='Om Os' class="panel" data-tab="nomos">
+                    <article class="tabcontainer">
+
+                        <h1>Om Os</h1>
+                        <p>
+                            Hos Danmarks Flyttemand er du sikret en kvalitetstransport med sans for effektivitet, faglig ekspertise og kundetilfredshed.
+                        </p>
+
+                        <p>
+                            Vi går ikke på kompromis med sikkerheden og behandler altid dine flyttesager med omhu. For hos os er kundetilfredshed helt afgørende. Du kan stole på os, da vi overholder aftaler og leveringstider, samtidig med at vi altid leverer konkurrencedygtige priser. Vi rykker ud og har altid et smil på læben og med ambitionerne og interessen i sjælen. Det er derfor at vi mener, at vi er Danmarks bedste flyttemænd.
+                        </p>
+
+                        <p>
+                            Vi klarer såvel store som små flytninger for både private og virksomheder. Og trænger lejligheden til en grundig rengøring og klargøring, klarer vi også det.
+                        </p>
+
+                        <hr />
+
+                        <h1>Flyttetips</h1>
+
+                        <h2>
+                            Begynd p&aring; planl&aelig;gningen af din flytning s&aring; tidligt som muligt
+                        </h2>
+
+                        <p>
+                            Her er en liste over netop det, der kan  din flytning lidt lettere og meget mere effektiv:
+                        </p>
+
+                        <h2>Oprydning inden flytningen</h2>
+                        <p>
+                            En af de f&oslash;rste ting at overveje, er oprydning af huset, hvor flytningen vil finde sted. Der er ingen grund til at betale for at flytte ting, du aldrig bruger.
+                        </p>
+                        <p>
+                            Giv disse ting v&aelig;k, s&aelig;lg dem online, hold et loppemarket eller kontakt os, og vi kan hj&aelig;lpe jer med at afskaffe dem.
+                        </p>
+
+                        <h2>Forberedelse af selve flytningen</h2>
+                        <p>
+                            Vi anbefaler at du er forberedt p&aring; nedenst&aring;ende ting, inden flytningen finder sted:
+                        </p>
+                        <ul class="list inset">
+                            <li>
+                                Er du  klar, n&aring;r dine flyttem&aelig;nd ankommer?
+                            </li>
+                            <li>
+                                Fik du pakket alle dine skr&oslash;belige ting forsvarligt?
+                            </li>
+                            <li>
+                                Er alle dine ejendele ordentligt pakket i m&aelig;rkede flyttekasser?
+                            </li>
+                            <li>
+                                Har du s&oslash;rget for at der ikke er mere end 20 kg i en flyttekasse?
+                            </li>
+                            <li>
+                                Kan flyttebilen parkere t&aelig;t p&aring; dit hjem, og er der noget, der kan g&oslash;res for at sikre nemmere adgang til flyttebilen?
+                            </li>
+                            <li>
+                                Har du afskaffet alle de u&oslash;nskede ejendele?
+                            </li>
+                        </ul>
+                        <p>
+                            V&aelig;r til r&aring;dighed hele dagen til at besvare sp&oslash;rgsm&aring;l, lede placeringen af dine m&oslash;bler og kasser, underskrive konnossementet, etc. flytning.
+                        </p>
+
+                        <h2>
+                            Brug for flere r&aring;d eller har du sp&oslash;rgsm&aring;l?
+                        </h2>
+                        <p>
+                            Kontakt os, for at opn&aring; maksimal tilfredshed, p&aring; et professionelt samt personligt plan.
+                        </p>
+                        <p>
+                            Eftersom at en flytning indeb&aelig;rer meget mere end blot transport af dine ejendele fra A til B, kan du bruge de ovenst&aring;ende r&aring;d, for at sikre en endnu bedre flytteoplevelse.
+                        </p>
+
+                        <hr />
+
+                        <h1>Betingelser</h1>
+                        <p>
+                          Se vores <a id="betingelserlink" href="#" data-ignore="true"> almindelige betingelser </a>.
+                        </p>
+
+                        <hr />
+
+                        <h1>Forsikring </h1>
+                        <p>
+                            N&aring;r  du flytter med Danmarks Flyttemand ApS
+                        er du naturligvis altid forsikret i henhold til  forsikringsloven.
+                        </p>
+
+                        <h2>Du skal v&aelig;re opm&aelig;rksom p&aring;</h2>
+                        <p>
+                            Alle <strong>spejle, glas, malerier o. lign</strong>., skal v&aelig;re pakket ind i boble plast eller  tilsvarende, for at v&aelig;re d&aelig;kket af flytteforsikringen.
+                        </p>
+                        <p>
+                            Ligeledes skal <strong>fladsk&aelig;rms tv og tilsvarende produkter</strong>, v&aelig;re pakket ind i original emballagen, for at sikre den optimale transport af effekten, og for at v&aelig;re omfattet af flytteforsikringen.
+                        </p>
+                        <p>
+                            Eventuelle skader p&aring; effekter,&nbsp;SKAL&nbsp;anmeldes, senest 48 timer efter endt flytning.
+                        </p>
+
+                    </article>
+                </div><!-- /omos -->
+
+            </div><!-- /content -->
+
+            <div id="navbar">
+                <a id="nservices" href="#services" data-persist-ajax="true" class="icon home">Services</a>
+                <a id="ntilbud" href="#tilbud" data-persist-ajax="true" class="icon paper">Indhent Tilbud</a>
+                <a id="nkontakt" href="#kontakt" data-persist-ajax="true" class="icon phone">Kontakt</a>
+                <a id="nomos" href="#omos" data-persist-ajax="true" class="icon user">Om Os</a>
+            </div> <!-- /navbar -->
+
+        </div><!-- /afui -->
+
+
+        <!-- Javascripts loaded at bottom for optimization -->
+
+
+        <!-- Add Cordova/PhoneGap javascript -->
+       <!-- <script type="text/javascript" charset="utf-8" src="cordova.js"></script> -->
+
+        <!-- Add Intel's App Framework v2 -->
+        <script type="text/javascript" charset="utf-8" src="ui/appframework.ui.min.js"></script>
+
+        <!-- Add Fastclick -->
+        <script type="text/javascript" charset="utf-8" src="js/fastclick.js"></script>
+
+        <!-- Add custom javascripts -->
+        <script type="text/javascript" charset="utf-8" src="js/formhandler.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/findvej.js"></script>
+
+        <!-- Add initialization javascript -->
+        <script type="text/javascript" charset="utf-8" src="js/init.js"></script>
+    </body>
+
+</html>

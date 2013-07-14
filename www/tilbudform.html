@@ -1,0 +1,116 @@
+<h1>F&aring; et uforpligtende tilbud!</h1>
+
+<p class="white">
+    Udfyld nedenst&aring;ende formular og vi vender tilbage indenfor 24 timer, med et uforpligtende tilbud.
+</p>
+
+<p class="white">
+    Felter med en stjerne (*) <strong>skal</strong> udfyldes for at indsende formularen.
+</p>
+
+<section id="indhenttilbud">
+    <form id="tilbudform">
+        <h2>Personlige oplysninger</h2>
+
+        Navn*: <input type="text" id="tilbud-name_input" placeholder='Dit fulde navn' required>
+        Telefon*: <input type="tel" id="tilbud-telephone_input" placeholder='Dit telefon- eller mobilnummer' required>
+        Email*: <input type="email" id="tilbud-email_input" placeholder='Din e-mail addresse' required>
+
+        <hr />
+
+        <h2>Fraflytter addresse</h2>
+
+        Addresse: <input type="text" id="from-address_input" placeholder='Addressen du flytter fra'>
+        Postnummer: <input type="number" min="1000" max="9999" step="1" id="from-zipcode_input" placeholder='Postnummeret du flytter fra'>
+        By: <input type="text" id="from-city_input" placeholder='Byen du flytter fra'>
+        Region: <select id="from-region_input" placeholder="Regionen du flytter fra">
+            <option value="Hovedstaden" selected='true'>Hovedstaden</option>
+            <option value="Sjælland">Sjælland</option>
+            <option value="Nordjylland">Nordjylland</option>
+            <option value="Midtjylland">Midtjylland</option>
+            <option value="Syddanmark">Syddanmark</option>
+            <option value="Udenfor Danmark">Udenfor Danmark</option>
+        </select>
+
+        Elevator: <select id="from-elevator_input">
+            <option value="Vælg" selected="true">Vælg</option>
+            <option value="Ja">Ja</option>
+            <option value="Nej">Nej</option>
+        </select>
+
+        Parkeringsafstand: <select id='from-parking_input'>
+            <option value="Vælg" selected="true">Vælg</option>
+            <option value="Ved gadedøren">Ved gadedøren</option>
+            <option value="0-10">0 til 10m</option>
+            <option value="10-25m">10 til 25m</option>
+            <option value="25-50m">25 til 50m</option>
+            <option value="50-80m">50 til 80m</option>
+            <option value="80-120m">80 til 120m</option>
+            <option value="Over 120m">Over 120m</option>
+        </select>
+
+        <h4>Boligstørrelse</h4>
+        Areal (m<sup>2</sup>): <input type="number" min="1" id='from-areal_input' placeholder='Størrelsen i kvadratmeter på boligen du flytter fra'>
+        Antal værelser: <input type="number" min="1" max="99" step="1" id='from-rooms_input' placeholder='Antal værelser i boligen du flytter fra'>
+
+        <hr />
+
+        <h2>Tilflytter addresse</h2>
+
+        Addresse: <input type="text" id="to-address_input" placeholder='Addressen du flytter til'>
+        Postnummer: <input type="number" min="1000" max="9999" step="1" id="to-zipcode_input" placeholder='Postnummeret du flytter til'>
+        By: <input type="text" id="to-city_input" placeholder='Byen du flytter til'>
+        Region: <select id="to-region_input">
+            <option value="Hovedstaden" selected='true'>Hovedstaden</option>
+            <option value="Sjælland">Sjælland</option>
+            <option value="Nordjylland">Nordjylland</option>
+            <option value="Midtjylland">Midtjylland</option>
+            <option value="Syddanmark">Syddanmark</option>
+            <option value="Udenfor DK">Udenfor Danmark</option>
+        </select>
+
+        Elevator: <select id="to-elevator_input">
+            <option value="Vælg" selected="true">Vælg</option>
+            <option value="Ja">Ja</option>
+            <option value="Nej">Nej</option>
+        </select>
+
+        Parkeringsafstand: <select id='to-parking_input'>
+            <option value="Vælg" selected="true">Vælg</option>
+            <option value="Ved gadedøren">Ved gadedøren</option>
+            <option value="0-10">0 til 10m</option>
+            <option value="10-25m">10 til 25m</option>
+            <option value="25-50m">25 til 50m</option>
+            <option value="50-80m">50 til 80m</option>
+            <option value="80-120m">80 til 120m</option>
+        </select>
+
+        <h3>Boligstørrelse</h3>
+        Areal (m<sup>2</sup>): <input type="number" min="1" id='to-areal_input' placeholder='Størrelsen i kvadratmeter på boligen du flytter til'>
+        Antal værelser: <input type="number" min="1" max="99" step="1" id='to-rooms_input' placeholder='Antal værelser i boligen du flytter til'>
+
+        <hr />
+
+        <h2>Flyttedato</h2>
+        Dato* (dd-mm-åååå): <input type="date" id="moving-date_input" placeholder="dd-mm-åååå" required>
+
+        Fleksibel flyttedato?: <select id='flexible-date_input'>
+            <option value="Vælg" selected="true">Vælg</option>
+            <option value="Ja">Ja</option>
+            <option value="Nej">Nej</option>
+        </select>
+
+        Antal flyttemænd: <input type="number" min="1" max="5" id="amount-men_input" placeholder='Vælg ønsket antal flyttemand. Den første er chauffør.'>
+        Ønskes nedpakning? <select id="pack-up_input">
+            <option value="Vælg" selected="true">Vælg</option>
+            <option value="Ja">Ja</option>
+            <option value="Nej">Nej</option>
+        </select>
+
+        Kort beskrivelse af indbo (genstande, møbler osv.)*:
+        <textarea id='description_input' rows='3' placeholder='Skriv en kort beskrivelse af dit indbo.' required></textarea>
+
+        <input id="tilbud-send" type="submit" value="Send" class="simple_button">
+
+    </form>
+</section>
