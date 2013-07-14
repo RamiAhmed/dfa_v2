@@ -83,6 +83,7 @@ function initGAanalytics() {
                     console.log("tracked " + page);
                 }, function(error){
                     // on error
+                    navigator.notification.alert("could not track " + page + ", error: " + error);
                     console.log("could not track " + page + "\n error: " + error);
                 }, page);
             }
@@ -92,6 +93,7 @@ function initGAanalytics() {
                     console.log("tracked " + page);
                 }, function(error){
                     // on error
+                    navigator.notification.alert("could not track " + page + ", error: " + error);
                     console.log("could not track " + page + "\n error: " + error);
                 }, '/index');
             }
@@ -100,11 +102,20 @@ function initGAanalytics() {
 
     function gaErrorHandler(error) {
         navigator.notification.alert("Google analytics error: " + error);
+        console.log("Google Analytics error: " + error);
     }
 
+    function initGAPlugin() {
+        gaPlugin = window.plugins.gaPlugin;
+        gaPlugin.init(gaSuccessHandler, gaErrorHandler, "UA-42432888-1", 10);
+    }
 
-    gaPlugin = window.plugins.gaPlugin;
-    gaPlugin.init(gaSuccessHandler, gaErrorHandler, "UA-42432888-1", 10);
+    function onGAPermission() {
+        if (button == 1)
+            initGAPlugin();
+    }
+
+    navigator.notification.confirm('Google Analytics vil gerne indsamle bruger data. Ingen personlig data vil blive indsamlet.', onGAPermission, 'Advarsel', 'Tillad,Afslå');
 }
 
 function exitGAAnalytics() {
