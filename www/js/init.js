@@ -59,9 +59,7 @@ function initIndexPage() {
 function onExitConfirm(button) {
     if (button == 1) {
         exitGAAnalytics();
-        window.setTimeout(function() {
-            navigator.app.exitApp();
-        }, 500);
+        navigator.app.exitApp();
     }
 }
 
