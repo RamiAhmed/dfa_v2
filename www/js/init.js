@@ -58,13 +58,12 @@ function initIndexPage() {
 /* BACK BUTTON */
 function onExitConfirm(button) {
     if (button == 1) {
-        exitGAAnalytics();
         navigator.app.exitApp();
     }
 }
 
 function onBackKeyDown() {
-    navigator.notification.confirm("Vil du virkeligt forlade Danmarks Flyttemand App?", onExitConfirm, "Forlad App", "Ja,Nej");
+    navigator.notification.confirm("Vil du virkeligt forlade Danmarks Flyttemand App?", onExitConfirm, "Exit", "Ja,Nej");
 }
 
 function initBackButton() {
@@ -74,58 +73,24 @@ function initBackButton() {
 /* Google Analytics Page Tracking */
 
 function initGAanalytics() {
-    function gaSuccessHandler() {
-        $('#afui .panel').on('loadpanel', function() {
-            var page = location.hash.substring(1);
+    $('#afui .panel').on('loadpanel', function() {
+        try {
+            page = location.hash.substring(1);
             if (page && page.length > 1) {
-                gaPlugin.trackPage(function(){
-                    //on success
-                    console.log("tracked " + page);
-                }, function(error){
-                    // on error
-                    navigator.notification.alert("could not track " + page + ", error: " + error);
-                    console.log("could not track " + page + "\n error: " + error);
-                }, page);
+            //    console.log("google analytics pageshow url: " + page);
+                ga_storage._trackPageview(page);
+            } else {
+            //    console.log("google analytics pageshow default url");
+                ga_storage._trackPageview('/index');
             }
-            else {
-                gaPlugin.trackPage(function(){
-                    //on success
-                    console.log("tracked " + page);
-                }, function(error){
-                    // on error
-                    navigator.notification.alert("could not track " + page + ", error: " + error);
-                    console.log("could not track " + page + "\n error: " + error);
-                }, '/index');
-            }
-        });
-    }
-
-    function gaErrorHandler(error) {
-        navigator.notification.alert("Google analytics error: " + error);
-        console.log("Google Analytics error: " + error);
-    }
-
-    function initGAPlugin() {
-        gaPlugin = window.plugins.gaPlugin;
-        gaPlugin.init(gaSuccessHandler, gaErrorHandler, "UA-42432888-1", 10);
-    }
-
-    function onGAPermission() {
-        if (button == 1)
-            initGAPlugin();
-    }
-
-    navigator.notification.confirm('Google Analytics vil gerne indsamle bruger data. Ingen personlig data vil blive indsamlet.', onGAPermission, 'Advarsel', 'Tillad,Afslå');
-}
-
-function exitGAAnalytics() {
-    gaPlugin.exit(function() {
-        console.log("GA exited succesfully");
-    }, function(error) {
-        navigator.notification.alert('GA exit error: ' + error);
-        console.log("GA reported error: " + error);
+        }
+        catch (e) {
+            navigator.notification.alert('Google Analytics error: ' + e);
+            console.log('error google analytics' + e);
+        }
     });
 }
+
 
 /* SWIPING */
 function initSwiping() {

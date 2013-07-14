@@ -15,8 +15,13 @@
         <!-- PhoneGap js injected automatically by build.phonegap.com -->
         <script type="text/javascript" src="phonegap.js"></script>
 
-        <!-- Google Analytics Plugin for Phonegap -->
-        <script type="text/javascript" src="GAPlugin.js"></script>
+        <!-- Google Analytics for Phonegap (using local storage) -->
+        <script type="text/javascript" src="js/libs/GALocalStorage.js"></script>
+        <script type="text/javascript">
+            ga_storage._setAccount('UA-42432888-1');
+            ga_storage._setDomain('none');
+            ga_storage._trackPageview('/index', 'First Page');
+        </script>
     </head>
 
     <body>
