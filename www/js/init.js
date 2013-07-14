@@ -55,12 +55,6 @@ function initIndexPage() {
     });
 };
 
-function fixDateOnAndroid() {
-    if (device.platform == "Android") {
-        $('moving-date_input').prop('type', 'number');
-    }
-}
-
 /* BACK BUTTON */
 function onExitConfirm(button) {
     if (button == 1) {
@@ -77,24 +71,7 @@ function initBackButton() {
 }
 
 /* Google Analytics Page Tracking */
-function initGAanalytics() {
-    $('#afui .panel').on('loadpanel', function() {
-        try {
-            page = location.hash.substring(1);
-            if (page && page.length > 1) {
-            //    console.log("google analytics pageshow url: " + page);
-                ga_storage._trackPageview(page);
-            } else {
-            //    console.log("google analytics pageshow default url");
-                ga_storage._trackPageview('/index');
-            }
-        }
-        catch (e) {
-            navigator.notification.alert('Google Analytics error: ' + e);
-            console.log('error google analytics' + e);
-        }
-    });
-}
+
 
 /* SWIPING */
 function initSwiping() {
@@ -180,7 +157,6 @@ $.ui.ready(function () {
     initIndexPage();
     initMaps();
     initFormHandler();
-    fixDateOnAndroid();
     initBackButton();
     initGAanalytics();
     initSwiping();
