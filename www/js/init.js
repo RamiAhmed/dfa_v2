@@ -71,7 +71,6 @@ function initBackButton() {
 }
 
 /* Google Analytics Page Tracking */
-
 function initGAanalytics() {
     $('#afui .panel').on('loadpanel', function() {
         try {

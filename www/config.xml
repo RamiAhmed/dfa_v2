@@ -87,11 +87,31 @@
     <icon src="icons/android/hdpi.png" gap:platform="android" gap:density="hdpi" />
     <icon src="icons/android/xhdpi.png" gap:platform="android" gap:density="xhdpi" />
 
-    <access origin="*" />
+    <access origin="phonegap.com" subdomains="true" />
+
+    <access origin="www.danmarksflyttemand.dk" />
+    <access origin="www.facebook.com" />
+    <access origin="docs.google.com" />
+    <access origin="maps.googleapis.com" />
+    <access origin="fonts.googleapis.com" />
+    <access origin="www.google-analytics.com" />
+
+    <access origin="danmarksflyttemandapp.herokuapp.com" />
 
     <access origin="http://127.0.0.1*"/> <!-- allow local pages -->
 
     <!--
+    <access origin="phonegap.com" subdomains="true" />
+
+    <access origin="www.danmarksflyttemand.dk" />
+    <access origin="www.facebook.com" />
+    <access origin="docs.google.com" />
+    <access origin="maps.googleapis.com" />
+    <access origin="fonts.googleapis.com" />
+    <access origin="www.google-analytics.com" />
+
+    <access origin="danmarksflyttemandapp.herokuapp.com" />
+
         <access origin="http://phonegap.com" />                    - allow any secure requests to http://phonegap.com/
         <access origin="http://phonegap.com" subdomains="true" />  - same as above, but including subdomains, such as http://build.phonegap.com/
         <access origin="http://phonegap.com" browserOnly="true" /> - only allows http://phonegap.com to be opened by the child browser.
