@@ -6,7 +6,7 @@
 // @copyright App Framework 2012
 // Modified by Rami@alphastagestudios.com - 2013
 
-(function () {
+(function ($) {
     var gmapsLoaded = false; //internal variable to see if the google maps API is available
 
     //We run this on document ready.  It will trigger a gmaps:available event if it's ready
@@ -34,7 +34,7 @@
     //If we do not pass in options, it returns the object
     // so we can act upon it.
 
-    $.fn.gmaps = function (opts) {
+    $.gmaps = function (opts) {
         if (this.length == 0) return;
         if (!opts) return mapsCache[this[0].id];
         //Special resize event
