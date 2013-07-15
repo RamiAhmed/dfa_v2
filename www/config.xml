@@ -86,12 +86,12 @@
     <access origin="phonegap.com" subdomains="true" />
 
     <access origin="www.danmarksflyttemand.dk" />
-    <access origin="www.facebook.com" />
+    <access origin="facebook.*" subdomains="true" />
 
-    <access origin="google.com" subdomains="true" />
-    <access origin="gstatic.com" subdomains="true" />
-    <access origin="googleapis.com" subdomains="true"/>
-    <access origin="google-analytics.com" subdomains="true" />
+    <access origin="google.*" subdomains="true" />
+    <access origin="gstatic.*" subdomains="true" />
+    <access origin="googleapis.*" subdomains="true"/>
+    <access origin="google-analytics.*" subdomains="true" />
 
     <access origin="danmarksflyttemandapp.herokuapp.com" />
 
