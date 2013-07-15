@@ -142,6 +142,11 @@ function initAutoFontSize() {
     $('body,html').css("font-size", '' + fontSize + 'px');
 }
 
+/* MAPS */
+function startMaps() {
+    initMaps();
+}
+
 /* INITIALIZATION */
 var fireOnce = false;
 
@@ -163,15 +168,9 @@ $.ui.ready(function () {
 
     initBackButton();
     initSwiping();
-    window.setTimeout(function() {
-        initGAanalytics();
-    }, 100);
-    window.setTimeout(function() {
-        initFormHandler();
-    }, 200);
-    window.setTimeout(function() {
-        initMaps();
-    }, 500);
+    window.setTimeout(initGAanalytics, 100);
+    window.setTimeout(initFormHandler, 200);
+    window.setTimeout(startMaps, 500);
 
 });
 
