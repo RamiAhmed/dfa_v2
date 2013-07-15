@@ -14,19 +14,6 @@ if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchsta
 
 $.ui.autoLaunch = false; //By default, it is set to true and you're app will run right away.  We set it to false to show a splashscreen
 
-$().ready(function() {
-    $.ui.useOSThemes=false;
-    $.ui.showBackbutton=false;
-    $.ui.openLinksNewTab = false;
-
-    window.setTimeout(function () {
-        if (!fireOnce)
-            $.ui.launch();
-        else
-            delete fireOnce;
-    }, 1500);
-});
-
 function openPDF() {
     var url = 'http://www.danmarksflyttemand.dk/forsikring/documents/Danmarksflyttemandvilk%C3%A5rogbetingelser.pdf',
         googleUrl = 'http://docs.google.com/viewer?url=';
@@ -186,11 +173,24 @@ $.ui.ready(function () {
 
 });
 
+$().ready(function() {
+    $.ui.useOSThemes = false;
+    $.ui.showBackbutton = false;
+    $.ui.openLinksNewTab = false;
+
+    window.setTimeout(function () {
+        if (!fireOnce)
+            $.ui.launch();
+        else
+            delete fireOnce;
+    }, 3000);
+});
+
 /* This code is used for native apps */
 var onDeviceReady = function () {
     fireOnce = true;
     window.setTimeout(function () {
         $.ui.launch();
-    }, 1000);
+    }, 1500);
 };
 document.addEventListener("deviceready", onDeviceReady, false);

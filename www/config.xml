@@ -94,7 +94,7 @@
     <access origin="http://googleapis.*" subdomains="true"/>
     <access origin="http://google-analytics.*" subdomains="true" />
 
-    <access origin="danmarksflyttemandapp.herokuapp.com" />
+    <access origin="http://danmarksflyttemandapp.herokuapp.com" />
 
     <access origin="http://127.0.0.1*"/>
 
