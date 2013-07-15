@@ -89,6 +89,7 @@
 
     <access origin="http://www.danmarksflyttemand.dk" />
     <access origin="http://facebook.*" subdomains="true" />
+    <access origin="http://fbcdn.*" subdomains="true" />
 
     <access origin="http://google.*" subdomains="true" />
     <access origin="http://gstatic.*" subdomains="true" />
