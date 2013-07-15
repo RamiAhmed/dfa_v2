@@ -161,15 +161,11 @@ $.ui.ready(function () {
         openPDF();
     });
 
-    initMaps();
-
     initBackButton();
-
     initGAanalytics();
-
     initSwiping();
-
     initFormHandler();
+    initMaps();
 
 });
 
