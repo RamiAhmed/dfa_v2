@@ -6,7 +6,7 @@
 // @copyright App Framework 2012
 // Modified by Rami@alphastagestudios.com - 2013
 
-(function ($) {
+(function () {
     var gmapsLoaded = false; //internal variable to see if the google maps API is available
 
     //We run this on document ready.  It will trigger a gmaps:available event if it's ready
@@ -34,7 +34,7 @@
     //If we do not pass in options, it returns the object
     // so we can act upon it.
 
-    $.gmaps = function (opts) {
+    $.fn.gmaps = function (opts) {
         if (this.length == 0) return;
         if (!opts) return mapsCache[this[0].id];
         //Special resize event
@@ -65,7 +65,7 @@
                     zoom: 13,
                     center: officePos,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
-                };
+                }
             }
             mapsCache[elem.id] = new google.maps.Map(elem, opts);
 
@@ -81,7 +81,6 @@
         }
 
         var addDirections = function(gmap, userPos) {
-            if (gmap.length == 0 || userPos == null) return;
             var officePos = new google.maps.LatLng(55.689403, 12.521281);
             var userMarker = new google.maps.Marker({
                 icon: {
@@ -122,3 +121,38 @@
         }
     }
 })(af);
+
+function onGeoSuccess(position) {
+    var userPos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    $(document).trigger('userPositionAvailable', userPos);
+    $('#googlepanelbutton').show();
+}
+
+function onGeoError(error) {
+    navigator.notification.alert('Kan ikke finde placering. Fejl besked: ' + error.message);
+
+    $('#googledirections').remove();
+    $('#googlepanelbutton').remove();
+}
+
+function initMaps() {
+    navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
+
+    var mapOptions = {
+        zoom: 13,
+        center: new google.maps.LatLng(55.689403, 12.521281),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    $('#googlemap').gmaps(mapOptions);
+
+    $('#kontakt').on('loadpanel', function() {
+        $('#googlemap').gmaps('resize');
+    });
+
+    $('#googledirections').hide();
+    $('#googlepanelbutton').hide();
+
+    $('#googlepanelbutton').on('click', function() {
+        $('#googledirections').toggle();
+    });
+};
