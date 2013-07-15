@@ -65,7 +65,7 @@
                     zoom: 13,
                     center: officePos,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
-                }
+                };
             }
             mapsCache[elem.id] = new google.maps.Map(elem, opts);
 
@@ -119,7 +119,7 @@
         //listen to the event
         if (!gmapsLoaded) {
             $(document).one("gmaps:available", function () {
-                createMap()
+                createMap();
             });
         } else {
             createMap();
