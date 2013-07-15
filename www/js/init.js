@@ -163,9 +163,15 @@ $.ui.ready(function () {
 
     initBackButton();
     initSwiping();
-    initGAanalytics();
-    initFormHandler();
-    initMaps();
+    window.setTimeout(function() {
+        initGAanalytics();
+    }, 100);
+    window.setTimeout(function() {
+        initFormHandler();
+    }, 200);
+    window.setTimeout(function() {
+        initMaps();
+    }, 500);
 
 });
 
