@@ -141,23 +141,38 @@ function onGeoError(error) {
 }
 
 function initMaps() {
-    navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
+    try {
+        navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
+    }
+    catch (e) {
+        navigator.notification.alert('geolocation error: ' + e);
+    }
 
-    var mapOptions = {
-        zoom: 13,
-        center: new google.maps.LatLng(55.689403, 12.521281),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    $('#afui #googlemap').gmaps(mapOptions);
+    try {
+        var mapOptions = {
+            zoom: 13,
+            center: new google.maps.LatLng(55.689403, 12.521281),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        $('#afui #googlemap').gmaps(mapOptions);
 
-    $('#afui #kontakt').on('loadpanel', function() {
-        $('#afui #googlemap').gmaps('resize');
-    });
+        $('#afui #kontakt').on('loadpanel', function() {
+            $('#afui #googlemap').gmaps('resize');
+        });
+    }
+    catch (e) {
+        navigator.notification.alert('map initialization error: ' + e);
+    }
 
-    $('#afui #googledirections').hide();
-    $('#afui #googlepanelbutton').hide();
+    try {
+        $('#afui #googledirections').hide();
+        $('#afui #googlepanelbutton').hide();
 
-    $('#afui #googlepanelbutton').on('click', function() {
-        $('#afui #googledirections').toggle();
-    });
+        $('#afui #googlepanelbutton').on('click', function() {
+            $('#afui #googledirections').toggle();
+        });
+    }
+    catch (e) {
+        navigator.notification.alert('Google directions button and panel error: ' + e);
+    }
 };
