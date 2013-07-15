@@ -136,7 +136,7 @@ function onGeoError(error) {
 }
 
 function initMaps() {
-    navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
+    //navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
 
     var mapOptions = {
         zoom: 13,
