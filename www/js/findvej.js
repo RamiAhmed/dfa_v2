@@ -147,37 +147,37 @@ function initMaps() {
         kontaktPage = document.getElementById('kontakt'),
         googleDirections = document.getElementById('googledirections'),
         googlePanelButton = document.getElementById('googlepanelbutton');
-
+/*
     navigator.notification.alert('googlemap: ' + googlemap.id);
     navigator.notification.alert('kontaktPage: ' + kontaktPage.id);
     navigator.notification.alert('googleDirections: ' + googleDirections.id);
     navigator.notification.alert('googlePanelButton: ' + googlePanelButton.id);
-
+*/
     try {
         var mapOptions = {
             zoom: 13,
             center: new google.maps.LatLng(55.689403, 12.521281),
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-        googlemap.gmaps(mapOptions);
+        $(googlemap).gmaps(mapOptions);
     }
     catch (e) {
         navigator.notification.alert('map initialization error: ' + e);
     }
 
     try {
-        kontaktPage.on('loadpanel', function() {
-            googlemap.gmaps('resize');
+        $(kontaktPage).on('loadpanel', function() {
+            $(googlemap).gmaps('resize');
         });
     }
     catch (e) {
         navigator.notification.alert('google resize error: ' + e);
     }
 
-    googleDirections.hide();
-    googlePanelButton.hide();
+    $(googleDirections).hide();
+    $(googlePanelButton).hide();
 
-    googlePanelButton.on('click', function() {
-        googleDirections.toggle();
+    $(googlePanelButton).on('click', function() {
+        $(googleDirections).toggle();
     });
 };
