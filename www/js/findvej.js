@@ -76,12 +76,7 @@
             });
 
             $(document).one('userPositionAvailable', function(evt, userPos) {
-                if (userPos != null && userPos != '') {
-                    addDirections(mapsCache[elem.id], userPos);
-                }
-                else {
-                    navigator.notification.alert('userPosition: ' + userPos);
-                }
+                addDirections(mapsCache[elem.id], userPos);
             });
         }
 
