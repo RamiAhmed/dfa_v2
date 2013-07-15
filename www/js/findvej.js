@@ -144,15 +144,10 @@ function onGeoError(error) {
 function initMaps() {
     navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
 
-    var googlemap = $('#googlemap'),
-        kontaktPage = $('#kontakt'),
-        googleDirections = $('#googledirections'),
-        googlePanelButton = $('#googlepanelbutton');
-
-    navigator.notification.alert('googlemap: ' + $(googlemap).id);
-    navigator.notification.alert('kontaktPage: ' + $(kontaktPage).id);
-    navigator.notification.alert('googleDirections: ' + $(googleDirections).id);
-    navigator.notification.alert('googlePanelButton: ' + $(googlePanelButton).id);
+    navigator.notification.alert('googlemap: ' + $('#googlemap').id);
+    navigator.notification.alert('kontaktPage: ' + $('#kontakt').id);
+    navigator.notification.alert('googleDirections: ' + $('#googledirections').id);
+    navigator.notification.alert('googlePanelButton: ' + $('#googlepanelbutton').id);
 
     try {
         var mapOptions = {
@@ -160,25 +155,25 @@ function initMaps() {
             center: new google.maps.LatLng(55.689403, 12.521281),
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-        $(googlemap).gmaps(mapOptions);
+        $('#googlemap').gmaps(mapOptions);
     }
     catch (e) {
         navigator.notification.alert('map initialization error: ' + e);
     }
 
     try {
-        $(kontaktPage).on('loadpanel', function() {
-            $(googlemap).gmaps('resize');
+        $('#kontakt').on('loadpanel', function() {
+            $('#googlemap').gmaps('resize');
         });
     }
     catch (e) {
         navigator.notification.alert('google resize error: ' + e);
     }
 
-    $(googleDirections).hide();
-    $(googlePanelButton).hide();
+    $('#googledirections').hide();
+    $('#googlepanelbutton').hide();
 
-    $(googlePanelButton).on('click', function() {
-        $(googleDirections).toggle();
+    $('#googlepanelbutton').on('click', function() {
+        $('#googledirections').toggle();
     });
 };
