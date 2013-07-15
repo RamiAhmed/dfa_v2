@@ -83,22 +83,23 @@
     <icon src="icons/android/hdpi.png" gap:platform="android" gap:density="hdpi" />
     <icon src="icons/android/xhdpi.png" gap:platform="android" gap:density="xhdpi" />
 
-    <!--
-    <access origin="phonegap.com" subdomains="true" />
 
-    <access origin="www.danmarksflyttemand.dk" />
-    <access origin="facebook.*" subdomains="true" />
+    <access origin="http://phonegap.*" subdomains="true" />
 
-    <access origin="google.*" subdomains="true" />
-    <access origin="gstatic.*" subdomains="true" />
-    <access origin="googleapis.*" subdomains="true"/>
-    <access origin="google-analytics.*" subdomains="true" />
+    <access origin="http://www.danmarksflyttemand.dk" />
+    <access origin="http://facebook.*" subdomains="true" />
+
+    <access origin="http://google.*" subdomains="true" />
+    <access origin="http://gstatic.*" subdomains="true" />
+    <access origin="http://googleapis.*" subdomains="true"/>
+    <access origin="http://google-analytics.*" subdomains="true" />
 
     <access origin="danmarksflyttemandapp.herokuapp.com" />
 
     <access origin="http://127.0.0.1*"/>
-    -->
 
+    <!--
     <access origin="*"/>
+    -->
 
 </widget>

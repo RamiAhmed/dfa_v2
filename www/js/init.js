@@ -174,11 +174,40 @@ $.ui.ready(function () {
         openPDF();
     });
 
-    initMaps();
-    initBackButton();
-    initGAanalytics();
-    initSwiping();
-    initFormHandler();
+    try {
+        initMaps();
+    }
+    catch (e) {
+        navigator.notification.alert('google maps error: ' + e);
+    };
+
+    try {
+        initBackButton();
+    }
+    catch (e) {
+        navigator.notification.alert('back button error: ' + e);
+    };
+
+    try {
+        initGAanalytics();
+    }
+    catch (e) {
+        navigator.notification.alert('google analytics error: ' + e);
+    };
+
+    try {
+        initSwiping();
+    }
+    catch (e) {
+        navigator.notification.alert('swiping error: ' +e);
+    };
+
+    try {
+        initFormHandler();
+    }
+    catch (e) {
+        navigator.notification.alert('formhandler error: ' + e);
+    };
 
 });
 
