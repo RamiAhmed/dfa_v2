@@ -79,6 +79,9 @@
                 if (userPos != null && userPos != '') {
                     addDirections(mapsCache[elem.id], userPos);
                 }
+                else {
+                    navigator.notification.alert('userPosition: ' + userPos);
+                }
             });
         }
 
@@ -127,14 +130,14 @@
 function onGeoSuccess(position) {
     var userPos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     $(document).trigger('userPositionAvailable', userPos);
-    $('#googlepanelbutton').show();
+    $('#afui #googlepanelbutton').show();
 }
 
 function onGeoError(error) {
     navigator.notification.alert('Kan ikke finde placering. Fejl besked: ' + error.message);
 
-    $('#googledirections').remove();
-    $('#googlepanelbutton').remove();
+    $('#afui #googledirections').remove();
+    $('#afui #googlepanelbutton').remove();
 }
 
 function initMaps() {
@@ -145,16 +148,16 @@ function initMaps() {
         center: new google.maps.LatLng(55.689403, 12.521281),
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    $('#googlemap').gmaps(mapOptions);
+    $('#afui #googlemap').gmaps(mapOptions);
 
-    $('#kontakt').on('loadpanel', function() {
-        $('#googlemap').gmaps('resize');
+    $('#afui #kontakt').on('loadpanel', function() {
+        $('#afui #googlemap').gmaps('resize');
     });
 
-    $('#googledirections').hide();
-    $('#googlepanelbutton').hide();
+    $('#afui #googledirections').hide();
+    $('#afui #googlepanelbutton').hide();
 
-    $('#googlepanelbutton').on('click', function() {
-        $('#googledirections').toggle();
+    $('#afui #googlepanelbutton').on('click', function() {
+        $('#afui #googledirections').toggle();
     });
 };
