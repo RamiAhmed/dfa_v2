@@ -86,6 +86,7 @@
         }
 
         var addDirections = function(gmap, userPos) {
+            if (gmap.length == 0 || userPos == null) return;
             var officePos = new google.maps.LatLng(55.689403, 12.521281);
             var userMarker = new google.maps.Marker({
                 icon: {
@@ -143,16 +144,16 @@ function onGeoError(error) {
 function initMaps() {
     navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
 
-    var googlemap = document.getElementById('googlemap'),
-        kontaktPage = document.getElementById('kontakt'),
-        googleDirections = document.getElementById('googledirections'),
-        googlePanelButton = document.getElementById('googlepanelbutton');
-/*
+    var googlemap = $('#googlemap'),
+        kontaktPage = $('#kontakt'),
+        googleDirections = $('#googledirections'),
+        googlePanelButton = $('#googlepanelbutton');
+
     navigator.notification.alert('googlemap: ' + googlemap.id);
     navigator.notification.alert('kontaktPage: ' + kontaktPage.id);
     navigator.notification.alert('googleDirections: ' + googleDirections.id);
     navigator.notification.alert('googlePanelButton: ' + googlePanelButton.id);
-*/
+
     try {
         var mapOptions = {
             zoom: 13,
