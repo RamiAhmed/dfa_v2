@@ -139,31 +139,16 @@ function onGeoError(error) {
 function initMaps() {
     navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
 
-    navigator.notification.alert('googlemap: ' + $('#googlemap').id);
-    navigator.notification.alert('kontaktPage: ' + $('#kontakt').id);
-    navigator.notification.alert('googleDirections: ' + $('#googledirections').id);
-    navigator.notification.alert('googlePanelButton: ' + $('#googlepanelbutton').id);
+    var mapOptions = {
+        zoom: 13,
+        center: new google.maps.LatLng(55.689403, 12.521281),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    $('#googlemap').gmaps(mapOptions);
 
-    try {
-        var mapOptions = {
-            zoom: 13,
-            center: new google.maps.LatLng(55.689403, 12.521281),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        $('#googlemap').gmaps(mapOptions);
-    }
-    catch (e) {
-        navigator.notification.alert('map initialization error: ' + e);
-    }
-
-    try {
-        $('#kontakt').on('loadpanel', function() {
-            $('#googlemap').gmaps('resize');
-        });
-    }
-    catch (e) {
-        navigator.notification.alert('google resize error: ' + e);
-    }
+    $('#kontakt').on('loadpanel', function() {
+        $('#googlemap').gmaps('resize');
+    });
 
     $('#googledirections').hide();
     $('#googlepanelbutton').hide();
