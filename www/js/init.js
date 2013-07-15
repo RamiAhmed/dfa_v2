@@ -137,14 +137,18 @@ function initSwiping() {
 function initAutoFontSize() {
     var windowWidth = window.innerWidth;
 
-    var fontFactor = 0.04;
+    var fontFactor = 0.035;
     var fontSize = windowWidth * fontFactor;
     $('body,html').css("font-size", '' + fontSize + 'px');
 }
 
 /* MAPS */
 function startMaps() {
-    initMaps();
+    try {
+        initMaps();
+    } catch(e) {
+        navigator.notification.alert('google maps error: ' + e);
+    }
 }
 
 /* INITIALIZATION */
