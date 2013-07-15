@@ -152,6 +152,7 @@ function initMaps() {
         $('#afui #googlemap').gmaps(mapOptions);
     }
     catch (e) {
+        navigator.notification.alert('found: ' + $('#afui #googlemap').id);
         navigator.notification.alert('map initialization error: ' + e);
     }
 
