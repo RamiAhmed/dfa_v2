@@ -149,10 +149,10 @@ function initMaps() {
         googleDirections = $('#googledirections'),
         googlePanelButton = $('#googlepanelbutton');
 
-    navigator.notification.alert('googlemap: ' + googlemap.id);
-    navigator.notification.alert('kontaktPage: ' + kontaktPage.id);
-    navigator.notification.alert('googleDirections: ' + googleDirections.id);
-    navigator.notification.alert('googlePanelButton: ' + googlePanelButton.id);
+    navigator.notification.alert('googlemap: ' + $(googlemap).id);
+    navigator.notification.alert('kontaktPage: ' + $(kontaktPage).id);
+    navigator.notification.alert('googleDirections: ' + $(googleDirections).id);
+    navigator.notification.alert('googlePanelButton: ' + $(googlePanelButton).id);
 
     try {
         var mapOptions = {
