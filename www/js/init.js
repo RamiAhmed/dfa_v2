@@ -162,8 +162,8 @@ $.ui.ready(function () {
     });
 
     initBackButton();
-    initGAanalytics();
     initSwiping();
+    initGAanalytics();
     initFormHandler();
     initMaps();
 
