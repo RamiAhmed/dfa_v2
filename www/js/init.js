@@ -142,6 +142,42 @@ function initAutoFontSize() {
     $('body,html').css("font-size", '' + fontSize + 'px');
 }
 
+/* GOOGLE MAPS */
+function onGeoSuccess(position) {
+    var userPos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    $(document).trigger('userPositionAvailable', userPos);
+    $('#googlepanelbutton').show();
+}
+
+function onGeoError(error) {
+    navigator.notification.alert('Kan ikke finde placering. Fejl besked: ' + error.message);
+
+    $('#googledirections').remove();
+    $('#googlepanelbutton').remove();
+}
+
+function initMaps() {
+    navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
+
+    var mapOptions = {
+        zoom: 13,
+        center: new google.maps.LatLng(55.689403, 12.521281),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    $('#googlemap').gmaps(mapOptions);
+
+    $('#kontakt').on('loadpanel', function() {
+        $('#googlemap').gmaps('resize');
+    });
+
+    $('#googledirections').hide();
+    $('#googlepanelbutton').hide();
+
+    $('#googlepanelbutton').on('click', function() {
+        $('#googledirections').toggle();
+    });
+};
+
 /* INITIALIZATION */
 var fireOnce = false;
 
