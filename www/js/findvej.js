@@ -141,12 +141,7 @@ function onGeoError(error) {
 }
 
 function initMaps() {
-    try {
-        navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
-    }
-    catch (e) {
-        navigator.notification.alert('geolocation error: ' + e);
-    }
+    navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
 
     try {
         var mapOptions = {
@@ -155,24 +150,24 @@ function initMaps() {
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         $('#afui #googlemap').gmaps(mapOptions);
-
-        $('#afui #kontakt').on('loadpanel', function() {
-            $('#afui #googlemap').gmaps('resize');
-        });
     }
     catch (e) {
         navigator.notification.alert('map initialization error: ' + e);
     }
 
     try {
-        $('#afui #googledirections').hide();
-        $('#afui #googlepanelbutton').hide();
-
-        $('#afui #googlepanelbutton').on('click', function() {
-            $('#afui #googledirections').toggle();
+        $('#afui #kontakt').on('loadpanel', function() {
+            $('#afui #googlemap').gmaps('resize');
         });
     }
     catch (e) {
-        navigator.notification.alert('Google directions button and panel error: ' + e);
+        navigator.notification.alert('google resize error: ' + e);
     }
+
+    $('#afui #googledirections').hide();
+    $('#afui #googlepanelbutton').hide();
+
+    $('#afui #googlepanelbutton').on('click', function() {
+        $('#afui #googledirections').toggle();
+    });
 };
