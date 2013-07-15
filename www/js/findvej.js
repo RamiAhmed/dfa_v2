@@ -150,10 +150,12 @@ function initMaps() {
         $("#googlemap").gmaps('resize');
     });
 */
+/*
     $('#googledirections').hide();
     $('#googlepanelbutton').hide();
 
     $('#googlepanelbutton').on('click', function() {
         $('#googledirections').toggle();
     });
+*/
 }
