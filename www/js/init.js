@@ -16,7 +16,6 @@ $.ui.autoLaunch = false; //By default, it is set to true and you're app will run
 
 $().ready(function() {
     $.ui.useOSThemes=false;
-    $.ui.blockPageScroll();
     $.ui.showBackbutton=false;
     $.ui.openLinksNewTab = false;
 
@@ -25,7 +24,7 @@ $().ready(function() {
             $.ui.launch();
         else
             delete fireOnce;
-    }, 1000);
+    }, 1500);
 });
 
 function openPDF() {
@@ -41,8 +40,8 @@ function loadPage(page, insertIntoId) {
     var req = new XMLHttpRequest();
     req.open("GET", page, false);
     req.send(null);
-    var page = req.responseText;
-    $(insertIntoId).html(page);
+    var newPage = req.responseText;
+    $(insertIntoId).html(newPage);
 };
 
 function initIndexPage() {
