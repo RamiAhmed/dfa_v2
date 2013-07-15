@@ -143,12 +143,13 @@ function initMaps() {
         center: new google.maps.LatLng(55.689403, 12.521281),
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
+/*
     $("#googlemap").gmaps(mapOptions);
 
     $("#kontakt").on('loadpanel', function() {
         $("#googlemap").gmaps('resize');
     });
-
+*/
     $('#googledirections').hide();
     $('#googlepanelbutton').hide();
 

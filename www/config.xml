@@ -84,7 +84,7 @@
     <icon src="icons/android/hdpi.png" gap:platform="android" gap:density="hdpi" />
     <icon src="icons/android/xhdpi.png" gap:platform="android" gap:density="xhdpi" />
 
-<!--
+
     <access origin="http://phonegap.*" subdomains="true" />
 
     <access origin="http://www.danmarksflyttemand.dk" />
@@ -99,9 +99,9 @@
     <access origin="http://danmarksflyttemandapp.herokuapp.com" />
 
     <access origin="http://127.0.0.1*"/>
--->
 
+    <!--
     <access origin="*"/>
-
+    -->
 
 </widget>
