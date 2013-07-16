@@ -34,7 +34,7 @@
     //If we do not pass in options, it returns the object
     // so we can act upon it.
 
-    $.af.gmaps = function (opts) {
+    $.fn.gmaps = function (opts) {
         if (this.length == 0) return;
         if (!opts) return mapsCache[this[0].id];
         //Special resize event
