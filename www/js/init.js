@@ -304,6 +304,7 @@ function startMaps() {
         });
     }
 
+    initMaps();
 }
 
 /* INITIALIZATION */
