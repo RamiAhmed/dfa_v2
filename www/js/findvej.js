@@ -137,12 +137,13 @@ function onGeoError(error) {
 
 function initMaps() {
     //navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
-
+/*
     var mapOptions = {
         zoom: 13,
         center: new google.maps.LatLng(55.689403, 12.521281),
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
+    */
 /*
     $("#googlemap").gmaps(mapOptions);
 
@@ -150,12 +151,12 @@ function initMaps() {
         $("#googlemap").gmaps('resize');
     });
 */
-/*
+
     $('#googledirections').hide();
     $('#googlepanelbutton').hide();
 
     $('#googlepanelbutton').on('click', function() {
         $('#googledirections').toggle();
     });
-*/
+
 }
