@@ -281,16 +281,19 @@ function startMaps() {
         navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
 
         $().ready(function() {
-            $('#googlemap').gmaps({
-                zoom: 13,
-                center: new google.maps.LatLng(55.689403, 12.521281),
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            });
+            try {
+                $('#googlemap').gmaps({
+                    zoom: 13,
+                    center: new google.maps.LatLng(55.689403, 12.521281),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                });
 
-            $('#kontakt').on('loadpanel', function() {
-                $('#googlemap').gmaps('resize');
-            });
-
+                $('#kontakt').on('loadpanel', function() {
+                    $('#googlemap').gmaps('resize');
+                });
+            } catch(e) {
+                navigator.notification.alert('google maps error: ' + e);
+            }
 
             $('#googledirections').hide();
             $('#googlepanelbutton').hide();
@@ -327,13 +330,8 @@ $.ui.ready(function () {
     initGAanalytics();
     initFormHandler();
 
-    try {
-        startMaps();
-    }
-    catch(e) {
-        navigator.notification.alert('google maps error: ' + e);
-        console.log(e);
-    }
+    startMaps();
+
 
 });
 
