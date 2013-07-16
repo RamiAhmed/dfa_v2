@@ -172,9 +172,9 @@ $.ui.ready(function () {
 
     initBackButton();
     initSwiping();
-    window.setTimeout(initGAanalytics, 100);
-    window.setTimeout(initFormHandler, 200);
-    window.setTimeout(startMaps, 500);
+    initGAanalytics();
+    initFormHandler();
+    startMaps();
 
 });
 
