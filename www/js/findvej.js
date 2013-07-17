@@ -12,7 +12,7 @@
     //We run this on document ready.  It will trigger a gmaps:available event if it's ready
     // or it will include the google maps script for you
     $(document).ready(function () {
-        if(window["google"]&&google.maps){
+        if(window['google']&&google.maps){
             $(document).trigger("gmaps:available");
             gmapsLoaded = true;
             return true;
@@ -20,7 +20,7 @@
         var gmaps = document.createElement("script");
         gmaps.src = "http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&callback=gmapsPluginLoaded";
         $("head").append(gmaps);
-        window["gmapsPluginLoaded"] = function () {
+        window['gmapsPluginLoaded'] = function () {
             $(document).trigger("gmaps:available");
             gmapsLoaded = true;
         }
@@ -40,7 +40,7 @@
         //Special resize event
         if(opts=="resize"&&mapsCache[this[0].id])
         {
-           return google.maps.event.trigger(mapsCache[this[0].id], "resize");
+           return google.maps.event.trigger(mapsCache[this[0].id], 'resize');
         }
 
         //loop through the items and create the new gmaps object
@@ -91,24 +91,24 @@ function onGeoError(error) {
 }
 
 function initMaps() {
-    //navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
-
-    var mapOptions = {
-        zoom: 13,
-        center: new google.maps.LatLng(55.689403, 12.521281),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    $('#googlemap').gmaps(mapOptions);
-
-    $('#kontakt').on('loadpanel', function() {
-        $('#googlemap').gmaps('resize');
-    });
+    navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
 
     $('#googledirections').hide();
     $('#googlepanelbutton').hide();
-/*
+
     $('#googlepanelbutton').on('click', function() {
         $('#googledirections').toggle();
     });
-*/
+
+    $('#index').one('unloadpanel', function() {
+        $('#googlemap').gmaps({
+            zoom: 13,
+            center: new google.maps.LatLng(55.689403, 12.521281),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        $('#kontakt').on('loadpanel', function() {
+            $('#googlemap').gmaps('resize');
+        });
+    });
 };
