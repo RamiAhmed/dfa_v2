@@ -1,3 +1,7 @@
+/* Script written by Rami@alphastagestudios.com
+    All Copyrights preserved.
+*/
+
 // @author Ian Maffett
 // @copyright App Framework 2012
 // Modified by Rami@alphastagestudios.com - 2013
@@ -110,14 +114,13 @@
         //listen to the event
         if (!gmapsLoaded) {
             $(document).one("gmaps:available", function () {
-                createMap();
+                createMap()
             });
         } else {
             createMap();
         }
     }
 })(af);
-
 
 function onGeoSuccess(position) {
     var userPos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -135,26 +138,21 @@ function onGeoError(error) {
 function initMaps() {
     navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
 
-    $().ready(function() {
-        try {
-            $('#googlemap').gmaps({
-                zoom: 13,
-                center: new google.maps.LatLng(55.689403, 12.521281),
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            });
+    var mapOptions = {
+        zoom: 13,
+        center: new google.maps.LatLng(55.689403, 12.521281),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    $('#googlemap').gmaps(mapOptions);
 
-            $('#kontakt').on('loadpanel', function() {
-                $('#googlemap').gmaps('resize');
-            });
-        } catch(e) {
-            navigator.notification.alert('init maps error: ' + e);
-        }
-
-        $('#googledirections').hide();
-        $('#googlepanelbutton').hide();
-
-        $('#googlepanelbutton').on('click', function() {
-            $('#googledirections').toggle();
-        });
+    $('#kontakt').on('loadpanel', function() {
+        $('#googlemap').gmaps('resize');
     });
-}
+
+    $('#googledirections').hide();
+    $('#googlepanelbutton').hide();
+
+    $('#googlepanelbutton').on('click', function() {
+        $('#googledirections').toggle();
+    });
+};
