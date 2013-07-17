@@ -147,27 +147,28 @@ var fireOnce = false;
 
 //This function will get executed when $.ui.launch has completed
 $.ui.ready(function () {
-    new FastClick(document.body);
+    $().ready(function() {
+        new FastClick(document.body);
 
-    initIndexPage();
-    initAutoFontSize();
+        initIndexPage();
+        initAutoFontSize();
 
-    loadPage('tilbudform.html', '#indhenttilbud');
-    loadPage('kontaktform.html', '#kontaktform');
-    loadPage('prisliste.html', '#kasseprisliste');
+        loadPage('tilbudform.html', '#indhenttilbud');
+        loadPage('kontaktform.html', '#kontaktform');
+        loadPage('prisliste.html', '#kasseprisliste');
 
-    $('#betingelserlink').on('click', function(evt) {
-        evt.preventDefault();
-        openPDF();
+        $('#betingelserlink').on('click', function(evt) {
+            evt.preventDefault();
+            openPDF();
+        });
+
+        initBackButton();
+        initSwiping();
+        initGAanalytics();
+        initFormHandler();
+
+        initMaps();
     });
-
-    initBackButton();
-    initSwiping();
-    initGAanalytics();
-    initFormHandler();
-
-    initMaps();
-
 
 });
 
