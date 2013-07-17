@@ -40,7 +40,13 @@
         //Special resize event
         if(opts=="resize"&&mapsCache[this[0].id])
         {
-           return google.maps.event.trigger(mapsCache[this[0].id], 'resize');
+            var map = mapsCache[this[0].id];
+            var center = map.getCenter();
+            google.maps.event.trigger(map, "resize");
+            map.setCenter(center);
+            map.setZoom(13);
+
+            return map;
         }
 
         //loop through the items and create the new gmaps object
@@ -62,20 +68,59 @@
                 }
             }
             mapsCache[elem.id] = new google.maps.Map(elem, opts);
-            google.maps.event.trigger(mapsCache[elem.id], 'resize');
+
+            var officeMarker = new google.maps.Marker({
+                position: officePos,
+                map: mapsCache[elem.id],
+                title: 'Danmarks Flyttemand Kontor'
+            });
+
+            $(document).one('userPositionAvailable', function(evt, userPos) {
+                addDirections(mapsCache[elem.id], userPos);
+            });
+        }
+
+        var addDirections = function(gmap, userPos) {
+            var officePos = new google.maps.LatLng(55.689403, 12.521281);
+            var userMarker = new google.maps.Marker({
+                icon: {
+                    path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+                    strokeColor: "green",
+                    scale: 5
+                },
+                position: userPos,
+                map: gmap,
+                title: 'Din placering'
+            });
+
+            var directionsService = new google.maps.DirectionsService();
+            var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
+            directionsDisplay.setMap(gmap);
+            directionsDisplay.setPanel(document.getElementById('googledirections'));
+
+            var request = {
+                origin: userPos,
+                destination: officePos,
+                travelMode: google.maps.DirectionsTravelMode.DRIVING
+            };
+            directionsService.route(request, function(response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                }
+            });
         }
 
         //If we try to create a map before it is available
         //listen to the event
         if (!gmapsLoaded) {
             $(document).one("gmaps:available", function () {
-                createMap()
+                createMap();
             });
         } else {
             createMap();
         }
     }
-})(jq);
+})(af);
 
 function onGeoSuccess(position) {
     var userPos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
