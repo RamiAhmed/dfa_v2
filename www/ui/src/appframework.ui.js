@@ -59,7 +59,7 @@
 
 
 
-        if ("AppMobi" in window){
+        if ("AppMobi" in window){ 
             document.addEventListener("appMobi.device.ready", function() {
                 that.autoBoot();
             });
@@ -112,7 +112,6 @@
     ui.prototype = {
         transitionTime: "230ms",
         showLoading: true,
-        loadingText: "Loading Content",
         loadContentQueue: [],
         isIntel: false,
         titlebar: "",
@@ -824,7 +823,7 @@
          * @title $.ui.showMask(text);
          */
         showMask: function(text) {
-            if (!text) text = this.loadingText || "";
+            if (!text) text = "Loading Content";
             $.query("#afui_mask>h1").html(text);
             $.query("#afui_mask").show();
         },
@@ -850,22 +849,14 @@
             var modalDiv = $.query("#modalContainer");
             if (typeof(id) === "string")
                 id = "#" + id.replace("#", "");
-            var $panel = $.query(id);
-            if ($panel.length) {
-                var useScroller = this.scrollingDivs.hasOwnProperty( $panel.attr("id") );
-                modalDiv.html($.feat.nativeTouchScroll || !useScroller ? $.query(id).html() : $.query(id).get(0).childNodes[0].innerHTML + '', true);
+            if ($.query(id)) {
+                modalDiv.html($.feat.nativeTouchScroll ? $.query(id).html() : $.query(id).get(0).childNodes[0].innerHTML + '', true);
                 modalDiv.append("<a onclick='$.ui.hideModal();' class='closebutton modalbutton'></a>");
                 that.modalWindow.style.display = "block";
 
                 this.runTransition(this.modalTransition, that.modalTransContainer, that.modalWindow, false);
 
-                if (useScroller) {
-                    this.scrollingDivs.modal_container.enable(that.resetScrollers);
-                }
-                else {
-                    this.scrollingDivs.modal_container.disable();
-                }
-
+                this.scrollingDivs.modal_container.enable(that.resetScrollers);
                 this.scrollToTop('modal');
                 modalDiv.data("panel", id);
 
@@ -1403,7 +1394,7 @@
             var that = this;
             if (target.indexOf("http") == -1) target = AppMobi.webRoot + target;
             var xmlhttp = new XMLHttpRequest();
-
+        
             if (anchor && typeof(anchor) !== "object") {
                 anchor = document.createElement("a");
                 anchor.setAttribute("data-persist-ajax", true);

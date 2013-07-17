@@ -321,7 +321,7 @@
     };
 })(af);
 /**
- * af.scroller
+ * af.scroller 
  * created by appMobi with modifications by Carlos Ouro @ Badoo and Intel
  * Supports iOS native touch scrolling
  * Optimizations and bug improvements by Intel
@@ -699,12 +699,12 @@
 
         };
         nativeScroller = function (el, opts) {
-
+           
             if(opts.nativeParent){
                 el=el.parentNode;
             }
             this.init(el, opts);
-
+            
             var $el = $(el);
 
             if (opts.noParent !== true) {
@@ -782,13 +782,13 @@
             }
         };
         nativeScroller.prototype.onTouchStart = function (e) {
-
+            
 
             if(this.el.scrollTop===0)
                 this.el.scrollTop=1;
             if(this.el.scrollTop===(this.el.scrollHeight - this.el.clientHeight))
                 this.el.scrollTop-=1;
-
+            
             if(this.horizontalScroll){
                 if(this.el.scrollLeft===0)
                     this.el.scrollLeft=1;
@@ -807,10 +807,10 @@
 
                 }
             }
-
+           
         };
         nativeScroller.prototype.onTouchMove = function (e) {
-
+           
             var newcY = e.touches[0].pageY - this.dY;
             var newcX = e.touches[0].pageX - this.dX;
             if(this.hasVertScroll&&this.el.clientHeight==this.el.scrollHeight){
@@ -1214,7 +1214,7 @@
             this.hasMoved = false;
 
             this.scrollerMoveCSS(this.lastScrollInfo, 0);
-
+      
 
         };
         jsScroller.prototype.getCSSMatrix = function (el) {
@@ -1409,7 +1409,7 @@
 
         };
 
-
+       
 
         jsScroller.prototype.calculateMovement = function (event, last) {
             //default variables
@@ -1463,7 +1463,7 @@
 
             var minLeft=this.container.clientWidth/2;
             var maxLeft=this.elementInfo.maxLeft+minLeft;
-
+            
             if (scrollInfo.x > minLeft) scrollInfo.x = minLeft;
             else if (-scrollInfo.x > maxLeft) scrollInfo.x = -maxLeft;
             else return;
@@ -2115,7 +2115,7 @@
 
             if (what == 1) { //show
                 $(theEl).vendorCss("TextSecurity","none");
-
+                
             } else {
                 $(theEl).vendorCss("TextSecurity","disc");
             }
@@ -2513,7 +2513,7 @@
 
     //singleton
     $.touchLayer = function(el) {
-        //  if(af.os.desktop||!af.os.webkit) return;
+        //	if(af.os.desktop||!af.os.webkit) return;
         $.touchLayer = new touchLayer(el);
         return $.touchLayer;
     };
@@ -3206,7 +3206,7 @@
 
 
 
-        if ("AppMobi" in window){
+        if ("AppMobi" in window){ 
             document.addEventListener("appMobi.device.ready", function() {
                 that.autoBoot();
             });
@@ -3259,7 +3259,6 @@
     ui.prototype = {
         transitionTime: "230ms",
         showLoading: true,
-        loadingText: "Loading Content",
         loadContentQueue: [],
         isIntel: false,
         titlebar: "",
@@ -3971,7 +3970,7 @@
          * @title $.ui.showMask(text);
          */
         showMask: function(text) {
-            if (!text) text = this.loadingText || "";
+            if (!text) text = "Loading Content";
             $.query("#afui_mask>h1").html(text);
             $.query("#afui_mask").show();
         },
@@ -3997,22 +3996,14 @@
             var modalDiv = $.query("#modalContainer");
             if (typeof(id) === "string")
                 id = "#" + id.replace("#", "");
-            var $panel = $.query(id);
-            if ($panel.length) {
-                var useScroller = this.scrollingDivs.hasOwnProperty( $panel.attr("id") );
-                modalDiv.html($.feat.nativeTouchScroll || !useScroller ? $.query(id).html() : $.query(id).get(0).childNodes[0].innerHTML + '', true);
+            if ($.query(id)) {
+                modalDiv.html($.feat.nativeTouchScroll ? $.query(id).html() : $.query(id).get(0).childNodes[0].innerHTML + '', true);
                 modalDiv.append("<a onclick='$.ui.hideModal();' class='closebutton modalbutton'></a>");
                 that.modalWindow.style.display = "block";
 
                 this.runTransition(this.modalTransition, that.modalTransContainer, that.modalWindow, false);
 
-                if (useScroller) {
-                    this.scrollingDivs.modal_container.enable(that.resetScrollers);
-                }
-                else {
-                    this.scrollingDivs.modal_container.disable();
-                }
-
+                this.scrollingDivs.modal_container.enable(that.resetScrollers);
                 this.scrollToTop('modal');
                 modalDiv.data("panel", id);
 
@@ -4550,7 +4541,7 @@
             var that = this;
             if (target.indexOf("http") == -1) target = AppMobi.webRoot + target;
             var xmlhttp = new XMLHttpRequest();
-
+        
             if (anchor && typeof(anchor) !== "object") {
                 anchor = document.createElement("a");
                 anchor.setAttribute("data-persist-ajax", true);
@@ -5114,7 +5105,6 @@
         });
     }
 })();
-
 (function($ui){
         function fadeTransition (oldDiv, currDiv, back) {
             oldDiv.style.display = "block";
@@ -5487,93 +5477,93 @@
  * Copyright 2012 - Intel
  */;
 (function($) {
-    "use strict";
+	"use strict";
 
-    if (!$) {
-        throw "This plugin requires jqUi";
-    }
+	if (!$) {
+		throw "This plugin requires jqUi";
+	}
 
-    function wire8Tiles() {
-        $.ui.isWin8 = true;
-        if (!$.os.ie) return;
+	function wire8Tiles() {
+		$.ui.isWin8 = true;
+		if (!$.os.ie) return;
 
-        $.ui.ready(function() {
+		$.ui.ready(function() {
 
-            if ($.ui.slideSideMenu) $.ui.slideSideMenu = false;
-            //we need to make sure the menu button shows up in the bottom navbar
-            $.query("#afui #navbar footer").append("<a id='metroMenu' onclick='$.ui.toggleSideMenu()'>•••</a>");
-            var tmpAnchors = $.query("#afui #navbar").find("a");
-            if (tmpAnchors.length > 0) {
-                tmpAnchors.data("ignore-pressed", "true").data("resetHistory", "true");
-                var width = parseFloat(100 / tmpAnchors.length);
-                tmpAnchors.css("width", width + "%");
-            }
-            var oldUpdate = $.ui.updateNavbarElements;
-            $.ui.updateNavbarElements = function() {
-                oldUpdate.apply($.ui, arguments);
-                if ($.query("#afui #navbar #metroMenu").length == 1) return;
-                $.query("#afui #navbar footer").append("<a id='metroMenu' onclick='$.ui.toggleSideMenu()'>•••</a>");
-            };
+			if ($.ui.slideSideMenu) $.ui.slideSideMenu = false;
+			//we need to make sure the menu button shows up in the bottom navbar
+			$.query("#afui #navbar footer").append("<a id='metroMenu' onclick='$.ui.toggleSideMenu()'>•••</a>");
+			var tmpAnchors = $.query("#afui #navbar").find("a");
+			if (tmpAnchors.length > 0) {
+				tmpAnchors.data("ignore-pressed", "true").data("resetHistory", "true");
+				var width = parseFloat(100 / tmpAnchors.length);
+				tmpAnchors.css("width", width + "%");
+			}
+			var oldUpdate = $.ui.updateNavbarElements;
+			$.ui.updateNavbarElements = function() {
+				oldUpdate.apply($.ui, arguments);
+				if ($.query("#afui #navbar #metroMenu").length == 1) return;
+				$.query("#afui #navbar footer").append("<a id='metroMenu' onclick='$.ui.toggleSideMenu()'>•••</a>");
+			};
 
-            var oldToggle = $.ui.toggleSideMenu;
-            $.ui.isSideMenuOn = function() {
+			var oldToggle = $.ui.toggleSideMenu;
+			$.ui.isSideMenuOn = function() {
 
-                var menu = parseInt($.getCssMatrix($("#navbar")).f) < 0 ? true : false;
-                return this.isSideMenuEnabled() && menu;
-            };
-            $.ui.toggleSideMenu = function(force, callback) {
-                if (!this.isSideMenuEnabled() || this.togglingSideMenu) return;
-                this.togglingSideMenu = true;
-                var that = this;
-                var menu = $.query("#menu");
-                var els = $.query("#navbar");
-                var open = this.isSideMenuOn();
+				var menu = parseInt($.getCssMatrix($("#navbar")).f) < 0 ? true : false;
+				return this.isSideMenuEnabled() && menu;
+			};
+			$.ui.toggleSideMenu = function(force, callback) {
+				if (!this.isSideMenuEnabled() || this.togglingSideMenu) return;
+				this.togglingSideMenu = true;
+				var that = this;
+				var menu = $.query("#menu");
+				var els = $.query("#navbar");
+				var open = this.isSideMenuOn();
 
-                if (force === 2 || (!open && ((force !== undefined && force !== false) || force === undefined))) {
-                    menu.show();
+				if (force === 2 || (!open && ((force !== undefined && force !== false) || force === undefined))) {
+					menu.show();
 
-                    that.css3animate(els, {
-                        y: "-150px",
-                        time: $.ui.transitionTime,
-                        complete: function(canceled) {
-                            that.togglingSideMenu = false;
+					that.css3animate(els, {
+						y: "-150px",
+						time: $.ui.transitionTime,
+						complete: function(canceled) {
+							that.togglingSideMenu = false;
 
-                            if (callback) callback(true);
+							if (callback) callback(true);
 
-                        }
-                    });
-                    that.css3animate(menu, {
-                        y: "0px",
-                        time: $.ui.transitionTime
-                    });
+						}
+					});
+					that.css3animate(menu, {
+						y: "0px",
+						time: $.ui.transitionTime
+					});
 
-                } else if (force === undefined || (force !== undefined && force === false)) {
+				} else if (force === undefined || (force !== undefined && force === false)) {
 
-                    that.css3animate(els, {
-                        y: "0",
-                        time: $.ui.transitionTime,
-                        complete: function(canceled) {
+					that.css3animate(els, {
+						y: "0",
+						time: $.ui.transitionTime,
+						complete: function(canceled) {
 
 
-                            that.togglingSideMenu = false;
-                            if (callback) callback(true);
-                            menu.hide();
-                        }
-                    });
-                    that.css3animate(menu, {
-                        y: "150px",
-                        time: $.ui.transitionTime
-                    });
-                }
-            };
-        });
-    }
+							that.togglingSideMenu = false;
+							if (callback) callback(true);
+							menu.hide();
+						}
+					});
+					that.css3animate(menu, {
+						y: "150px",
+						time: $.ui.transitionTime
+					});
+				}
+			};
+		});
+	}
 
-    if (!$.ui) {
-        $(document).ready(function() {
-            wire8Tiles();
-        });
-    } else {
-        wire8Tiles();
-    }
+	if (!$.ui) {
+		$(document).ready(function() {
+			wire8Tiles();
+		});
+	} else {
+		wire8Tiles();
+	}
 })(af);
