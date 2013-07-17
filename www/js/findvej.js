@@ -114,7 +114,7 @@
         //listen to the event
         if (!gmapsLoaded) {
             $(document).one("gmaps:available", function () {
-                createMap()
+                createMap();
             });
         } else {
             createMap();
