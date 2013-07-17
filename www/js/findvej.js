@@ -75,7 +75,7 @@
             createMap();
         }
     }
-})(af);
+})(jq);
 
 function onGeoSuccess(position) {
     var userPos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -100,17 +100,22 @@ function initMaps() {
         $('#googledirections').toggle();
     });
 
-    $('#googlemap').text('Loading...');
+    $('#googlemap').text('Loading Google Maps...');
 
     $('#index').one('unloadpanel', function() {
-        $('#googlemap').gmaps({
-            zoom: 13,
-            center: new google.maps.LatLng(55.689403, 12.521281),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
+        try {
+            $('#googlemap').gmaps({
+                zoom: 13,
+                center: new google.maps.LatLng(55.689403, 12.521281),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
 
-        $('#kontakt').on('loadpanel', function() {
-            $('#googlemap').gmaps('resize');
-        });
+            $('#kontakt').on('loadpanel', function() {
+                $('#googlemap').gmaps('resize');
+            });
+        } catch(e) {
+            navigator.notification.alert('init maps error: ' + e);
+        }
+
     });
 };
