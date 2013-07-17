@@ -5,7 +5,7 @@
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "com.alphastagestudios.danmarksflyttemandapp"
         version     = "2.0.0">
-    <name>Danmarks Flyttemand App</name>
+    <name>Danmarks Flyttemand</name>
 
     <description>
         Få et flyttetilbud fra Danmarks Flyttemand her og nu. RING på 20 54 54 54. Vi garanterer en effektiv flytning.
