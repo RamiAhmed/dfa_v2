@@ -100,6 +100,8 @@ function initMaps() {
         $('#googledirections').toggle();
     });
 
+    $('#googlemap').text('Loading...');
+
     $('#index').one('unloadpanel', function() {
         $('#googlemap').gmaps({
             zoom: 13,
