@@ -53,12 +53,11 @@ function initMaps() {
                 mapsUrl += 'center=55.689403,12.521281';
             }
             $('#googlemap').html(
-                '<p>Find vej til hovedkontoret med <a href="'+mapsUrl+'" data-ignore="true">Google Maps</a>.</p>'
+                '<p>Find vej til hovedkontoret med <a id="mapurl" href="#" data-ignore="true">Google Maps</a>.</p>'
             );
+            $('#mapurl').attr('href', mapsUrl);
             $('#googlemap').css('height', '60px');
         }
 
-
     });
-
 };
