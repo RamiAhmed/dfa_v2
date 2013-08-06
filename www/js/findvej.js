@@ -46,11 +46,13 @@ function initMaps() {
 
             var mapsUrl = 'http://maps.google.com/maps?';
             if (userPos != null) {
-                mapsUrl += 'saddr=' + userPos.lat() + ',' + userPos.lng() + '&';
-                mapsUrl += 'daddr=55.689403,12.521281';
+                mapsUrl += 'saddr=' + userPos.lat() + ',' + userPos.lng();
+                mapsUrl += '&daddr=55.689403,12.521281';
+                mapsUrl += '&zoom=13';
             }
             else {
                 mapsUrl += 'center=55.689403,12.521281';
+                mapsUrl += '&zoom=13';
             }
             $('#googlemap').html(
                 '<p>Find vej til hovedkontoret med <a id="mapurl" href="#" data-ignore="true">Google Maps</a>.</p>'
