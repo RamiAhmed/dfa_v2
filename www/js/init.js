@@ -162,12 +162,11 @@ $.ui.ready(function () {
             openPDF();
         });
 
+        initMaps();
         initBackButton();
         initSwiping();
         initGAanalytics();
         initFormHandler();
-
-        initMaps();
     });
 
 });

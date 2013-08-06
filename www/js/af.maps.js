@@ -40,7 +40,7 @@
     //If we do not pass in options, it returns the object
     // so we can act upon it.
 
-    $.fn.gmaps = function (opts) {
+    $.fn.gmaps = function (opts, userPos) {
         if (this.length == 0) return;
         if (!opts) return mapsCache[this[0].id];
         //Special resize event
@@ -57,13 +57,13 @@
 
         //loop through the items and create the new gmaps object
         for (var i = 0; i < this.length; i++) {
-            new gmaps(this[i], opts);
+            new gmaps(this[i], opts, userPos);
         }
     };
 
 
     //This is a local object that gets created from the above.
-    var gmaps = function (elem, opts) {
+    var gmaps = function (elem, opts, userPos) {
         var createMap = function () {
             var officePos = new google.maps.LatLng(55.689403, 12.521281);
             if (!opts || Object.keys(opts).length == 0) {
@@ -81,9 +81,9 @@
                 title: 'Danmarks Flyttemand Kontor'
             });
 
-            $(document).one('userPositionAvailable', function(evt, userPos) {
+            if (userPos != null) {
                 addDirections(mapsCache[elem.id], userPos);
-            });
+            }
         }
 
         var addDirections = function(gmap, userPos) {
