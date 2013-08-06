@@ -44,23 +44,18 @@ function initMaps() {
             $('#googledirections').remove();
             $('#googlepanelbutton').remove();
 
-            var mapsUrl = 'comgooglemaps://?'; //'http://maps.google.com/maps?';
+            var mapsUrl = 'http://maps.google.com/maps?';
             if (userPos != null) {
                 mapsUrl += 'saddr=' + userPos.lat() + ',' + userPos.lng() + '&';
-                mapsUrl += 'daddr=55.689403,12.521281&';
-                mapsUrl += 'zoom=13&';
-                mapsUrl += 'directionsmode=driving';
+                mapsUrl += 'daddr=55.689403,12.521281';
             }
             else {
-                mapsUrl += 'center=55.689403,12.521281&';
-                mapsUrl += 'zoom=13&';
-                mapsUrl += 'mapmode=standard&';
-                mapsUrl += 'views=traffic';
+                mapsUrl += 'center=55.689403,12.521281';
             }
             $('#googlemap').html(
                 '<p>Find vej til hovedkontoret med <a href="'+mapsUrl+'" data-ignore="true">Google Maps</a>.</p>'
             );
-            $('#googlemap').css('height', '70px');
+            $('#googlemap').css('height', '60px');
         }
 
 
