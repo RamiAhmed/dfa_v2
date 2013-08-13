@@ -178,7 +178,7 @@ function initMaps() {
             mapsUrl += '&zoom=13';
 
             $('#googlemap').html(
-                '<p>Find vej til hovedkontoret med <a id="mapurl" href="#" data-ignore="true">Google Maps</a>.</p>'
+                '<h3>Find vej til hovedkontoret med <a id="mapurl" href="#" data-ignore="true">Google Maps</a>.</h3>'
             );
             $('#mapurl').attr('href', mapsUrl);
             $('#googlemap').css('height', '60px');
