@@ -133,6 +133,8 @@ function onGeoError(error) {
 
     $('#googledirections').remove();
     $('#googlepanelbutton').remove();
+
+    navigator.notification.alert('Fejl: Kunne ikke finde bruger placering.');
 }
 
 function initMaps() {
