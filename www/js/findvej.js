@@ -172,6 +172,7 @@ function initMaps() {
             );
             $('#mapurl').attr('href', mapsUrl);
             $('#googlemap').css('height', '60px');
+            $('#googlemap').css('line-height', '60px');
         }
     });
 };
