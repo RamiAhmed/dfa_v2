@@ -138,41 +138,39 @@ function onGeoError(error) {
 function initMaps() {
     navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
 
-    $('#kontakt').one('loadpanel', function() {
-        try {
-            var mapOptions = {
-                zoom: 13,
-                center: new google.maps.LatLng(55.689403, 12.521281),
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            $('#googlemap').gmaps(mapOptions);
+    try {
+        var mapOptions = {
+            zoom: 13,
+            center: new google.maps.LatLng(55.689403, 12.521281),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        $('#googlemap').gmaps(mapOptions);
 
-            $('#kontakt').on('loadpanel', function() {
-                $('#googlemap').gmaps('resize');
-            });
+        $('#kontakt').on('loadpanel', function() {
+            $('#googlemap').gmaps('resize');
+        });
 
-            $('#googledirections').hide();
-            $('#googlepanelbutton').hide();
+        $('#googledirections').hide();
+        $('#googlepanelbutton').hide();
 
-            $('#googlepanelbutton').on('click', function() {
-                $('#googledirections').toggle();
-            });
-        }
-        catch (e) {
-            $('#googledirections').remove();
-            $('#googlepanelbutton').remove();
+        $('#googlepanelbutton').on('click', function() {
+            $('#googledirections').toggle();
+        });
+    }
+    catch (e) {
+        $('#googledirections').remove();
+        $('#googlepanelbutton').remove();
 
-            var mapsUrl = 'http://maps.google.com/maps?';
-            mapsUrl += 'daddr=55.689403,12.521281';
-            mapsUrl += '&zoom=13';
-            mapsUrl += '&directionsmode=driving';
+        var mapsUrl = 'http://maps.google.com/maps?';
+        mapsUrl += 'daddr=55.689403,12.521281';
+        mapsUrl += '&zoom=13';
+        mapsUrl += '&directionsmode=driving';
 
-            $('#googlemap').html(
-                '<h3>Find vej til hovedkontoret med <a id="mapurl" href="#" data-ignore="true">Google Maps</a>.</h3>'
-            );
-            $('#mapurl').attr('href', mapsUrl);
-            $('#googlemap').css('height', '60px');
-            $('#googlemap').css('line-height', '60px');
-        }
-    });
+        $('#googlemap').html(
+            '<h3>Find vej til hovedkontoret med <a id="mapurl" href="#" data-ignore="true">Google Maps</a>.</h3>'
+        );
+        $('#mapurl').attr('href', mapsUrl);
+        $('#googlemap').css('height', '60px');
+        $('#googlemap').css('line-height', '50px');
+    }
 };
