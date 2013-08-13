@@ -138,21 +138,50 @@ function onGeoError(error) {
 function initMaps() {
     navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
 
-    var mapOptions = {
-        zoom: 13,
-        center: new google.maps.LatLng(55.689403, 12.521281),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    $('#googlemap').gmaps(mapOptions);
+    $('#kontakt').one('loadpanel', function() {
+        try {
+            var mapOptions = {
+                zoom: 13,
+                center: new google.maps.LatLng(55.689403, 12.521281),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            $('#googlemap').gmaps(mapOptions);
 
-    $('#kontakt').on('loadpanel', function() {
-        $('#googlemap').gmaps('resize');
-    });
+            $('#kontakt').on('loadpanel', function() {
+                $('#googlemap').gmaps('resize');
+            });
 
-    $('#googledirections').hide();
-    $('#googlepanelbutton').hide();
+            $('#googledirections').hide();
+            $('#googlepanelbutton').hide();
 
-    $('#googlepanelbutton').on('click', function() {
-        $('#googledirections').toggle();
+            $('#googlepanelbutton').on('click', function() {
+                $('#googledirections').toggle();
+            });
+        }
+        catch (e) {
+            $('#googledirections').remove();
+            $('#googlepanelbutton').remove();
+
+            var userPosition = null;
+            $(document).one('userPositionAvailable', function(evt, userPos) {
+                userPosition = userPos;
+            });
+
+            var mapsUrl = 'http://maps.google.com/maps?';
+            if (userPosition != null) {
+                mapsUrl += 'saddr=' + userPosition.lat() + ',' + userPosition.lng();
+                mapsUrl += '&daddr=55.689403,12.521281';
+            }
+            else {
+                mapsUrl += 'center=55.689403,12.521281';
+            }
+            mapsUrl += '&zoom=13';
+
+            $('#googlemap').html(
+                '<p>Find vej til hovedkontoret med <a id="mapurl" href="#" data-ignore="true">Google Maps</a>.</p>'
+            );
+            $('#mapurl').attr('href', mapsUrl);
+            $('#googlemap').css('height', '60px');
+        }
     });
 };
