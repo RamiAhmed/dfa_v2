@@ -122,7 +122,7 @@
     }
 })(af);
 
-function onGeoSuccess(position) {
+var onGeoSuccess = function(position) {
     var userPos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     $(document).trigger('userPositionAvailable', userPos);
     $('#googlepanelbutton').show();
