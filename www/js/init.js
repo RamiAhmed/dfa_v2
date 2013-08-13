@@ -13,6 +13,9 @@ if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchsta
 
 
 $.ui.autoLaunch = false; //By default, it is set to true and you're app will run right away.  We set it to false to show a splashscreen
+$.ui.useOSThemes = false;
+$.ui.showBackbutton = false;
+$.ui.openLinksNewTab = false;
 
 function openPDF() {
     var url = 'http://www.danmarksflyttemand.dk/forsikring/documents/Danmarksflyttemandvilk%C3%A5rogbetingelser.pdf',
@@ -172,10 +175,6 @@ $.ui.ready(function () {
 });
 
 $().ready(function() {
-    $.ui.useOSThemes = false;
-    $.ui.showBackbutton = false;
-    $.ui.openLinksNewTab = false;
-
     window.setTimeout(function () {
         if (!fireOnce)
             $.ui.launch();
