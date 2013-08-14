@@ -11,7 +11,7 @@
 
     //We run this on document ready.  It will trigger a gmaps:available event if it's ready
     // or it will include the google maps script for you
-    $(document).ready(function () {
+    $().ready(function () {
         if(window["google"]&&google.maps){
             $(document).trigger("gmaps:available");
             gmapsLoaded = true;
@@ -28,6 +28,33 @@
 
     //Local cache of the google maps objects
     var mapsCache = {};
+    var userPos = null;
+
+    var onGeoError = function() {
+        navigator.notification.alert('Kan ikke finde placering. Fejl besked: ' + error.message);
+
+        $('#googledirections').remove();
+        $('#googlepanelbutton').remove();
+    }
+
+    var onGeoSuccess = function(position) {
+        userPos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        $('#googlepanelbutton').show();
+
+        $('#googlepanelbutton').on('click', function() {
+            $('#googledirections').toggle();
+        });
+    }
+
+    var onDeviceReady = function() {
+        navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
+
+        $().ready(function() {
+            $('#googledirections').hide();
+            $('#googlepanelbutton').hide();
+        });
+    };
+    document.addEventListener("deviceready", onDeviceReady, false);
 
     //We can invoke this in two ways
     //If we pass in positions, we create the google maps object
@@ -75,9 +102,12 @@
                 title: 'Danmarks Flyttemand Kontor'
             });
 
-            $(document).one('userPositionAvailable', function(evt, userPos) {
+            if (userPos != null) {
                 addDirections(mapsCache[elem.id], userPos);
-            });
+            }
+            else {
+                navigator.notification.alert('userPos is ' + userPos);
+            }
         }
 
         var addDirections = function(gmap, userPos) {
@@ -122,24 +152,7 @@
     }
 })(af);
 
-var onGeoSuccess = function(position) {
-    var userPos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    $(document).trigger('userPositionAvailable', userPos);
-    $('#googlepanelbutton').show();
-}
-
-function onGeoError(error) {
-    navigator.notification.alert('Kan ikke finde placering. Fejl besked: ' + error.message);
-
-    $('#googledirections').remove();
-    $('#googlepanelbutton').remove();
-
-    navigator.notification.alert('Fejl: Kunne ikke finde bruger placering.');
-}
-
 function initMaps() {
-    navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
-
     try {
         var mapOptions = {
             zoom: 13,
@@ -150,13 +163,6 @@ function initMaps() {
 
         $('#kontakt').on('loadpanel', function() {
             $('#googlemap').gmaps('resize');
-        });
-
-        $('#googledirections').hide();
-        $('#googlepanelbutton').hide();
-
-        $('#googlepanelbutton').on('click', function() {
-            $('#googledirections').toggle();
         });
     }
     catch (e) {
