@@ -51,7 +51,7 @@
     var onDeviceReady = function() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError
-                , {timeout:10000, enableHighAccuracy:true});
+                , {maximumAge:60000, timeout:10000, enableHighAccuracy:true});
         }
         else {
             navigator.notification.alert('Ingen geolocation fundet. Geolocation: ' + navigator.geolocation);
