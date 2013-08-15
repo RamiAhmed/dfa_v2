@@ -49,7 +49,13 @@
     }
 
     var onDeviceReady = function() {
-        navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError
+                , {timeout:10000});
+        }
+        else {
+            navigator.notification.alert('Ingen geolocation fundet. Geolocation: ' + navigator.geolocation);
+        }
 
         $().ready(function() {
             $('#googledirections').hide();
