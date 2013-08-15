@@ -119,7 +119,7 @@
                         addDirections(mapsCache[elem.id], userPos);
                     }
                     else {
-                        navigator.notification.alert('User Position is ' + userPos);
+                        navigator.notification.alert('Kan ikke finde din placering');
                     }
                 });
             }
