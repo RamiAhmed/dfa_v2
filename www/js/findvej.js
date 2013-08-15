@@ -44,6 +44,8 @@
         $('#googlepanelbutton').on('click', function() {
             $('#googledirections').toggle();
         });
+
+        $(document).trigger("gmaps:userpos");
     }
 
     var onDeviceReady = function() {
@@ -106,7 +108,14 @@
                 addDirections(mapsCache[elem.id], userPos);
             }
             else {
-                navigator.notification.alert('userPos is ' + userPos);
+                $(document).one('gmaps:userpos', function() {
+                    if (userPos != null) {
+                        addDirections(mapsCache[elem.id], userPos);
+                    }
+                    else {
+                        navigator.notification.alert('User Position is ' + userPos);
+                    }
+                });
             }
         }
 
