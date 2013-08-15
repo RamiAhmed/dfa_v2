@@ -56,6 +56,10 @@ html, body {
     font-size: 1.1em;
 }
 
+#afui a:active, a:hover {
+    color: #25445d;
+}
+
 #afui hr {
     color: #404040;
 }
