@@ -31,7 +31,7 @@
     var userPos = null;
 
     var onGeoError = function(error) {
-        navigator.notification.alert('Kan ikke finde placering. Fejl besked: ' + error.message);
+        navigator.notification.alert('Kan ikke finde placering. Fejl besked: ' + error.message + '. Genstart eventuelt telefonen.');
 
         $('#googledirections').remove();
         $('#googlepanelbutton').remove();
