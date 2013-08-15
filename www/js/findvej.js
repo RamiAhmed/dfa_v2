@@ -30,7 +30,7 @@
     var mapsCache = {};
     var userPos = null;
 
-    var onGeoError = function() {
+    var onGeoError = function(error) {
         navigator.notification.alert('Kan ikke finde placering. Fejl besked: ' + error.message);
 
         $('#googledirections').remove();
