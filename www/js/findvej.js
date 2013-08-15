@@ -49,7 +49,7 @@
     }
 
     var onDeviceReady = function() {
-        if (navigator.geolocation) {
+        if (navigator && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError
                 , {maximumAge:60000, timeout:10000, enableHighAccuracy:true});
         }
