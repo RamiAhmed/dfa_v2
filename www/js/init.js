@@ -147,7 +147,7 @@ function initAutoFontSize() {
     };
     autoSize();
 
-    $(document).on('orientationchange', function() {
+    $(window).on('orientationchange', function() {
         autoSize();
     });
 }
