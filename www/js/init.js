@@ -148,7 +148,7 @@ function initAutoFontSize() {
     autoSize();
 
     $(window).on('orientationchange', function() {
-        window.setTimeout(autoSize, 1000);
+        window.setTimeout(autoSize, 250);
     });
 }
 
