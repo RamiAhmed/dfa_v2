@@ -138,11 +138,18 @@ function initSwiping() {
 
 /* AUTO FONT SIZE */
 function initAutoFontSize() {
-    var windowWidth = window.innerWidth;
+    var autoSize = function() {
+        var windowWidth = window.innerWidth;
 
-    var fontFactor = 0.035;
-    var fontSize = windowWidth * fontFactor;
-    $('body,html').css("font-size", '' + fontSize + 'px');
+        var fontFactor = 0.035;
+        var fontSize = windowWidth * fontFactor;
+        $('body,html').css("font-size", '' + fontSize + 'px');
+    };
+    autoSize();
+
+    $(document).on('orientationchange', function() {
+        autoSize();
+    });
 }
 
 /* INITIALIZATION */
