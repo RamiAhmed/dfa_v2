@@ -2,10 +2,12 @@
     All Copyrights preserved.
 */
 
+var phpServer = 'http://rami_ahmed.0fees.net/htdocs/';
+
 function initContactFormHandler() {
     $('#kontakt-send').on('click', function(evt) {
     evt.preventDefault();
-    $.post('http://danmarksflyttemandapp.herokuapp.com/kontaktform-handler.php', {
+    $.post(phpServer + 'kontaktform-handler.php', {
         Company: $('#company_input').val(),
         Name: $('#name_input').val(),
         Address: $('#address_input').val(),
@@ -35,7 +37,7 @@ function initContactFormHandler() {
 function initTilbudFormHandler() {
     $('#tilbud-send').on('click', function(evt) {
         evt.preventDefault();
-        $.post('http://danmarksflyttemandapp.herokuapp.com/tilbudform-handler.php', {
+        $.post(phpServer + 'tilbudform-handler.php', {
             Name: $('#tilbud-name_input').val(),
             Telephone: $('#tilbud-telephone_input').val(),
             Email: $('#tilbud-email_input').val(),
