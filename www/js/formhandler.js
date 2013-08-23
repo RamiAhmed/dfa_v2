@@ -2,6 +2,29 @@
     All Copyrights preserved.
 */
 
+var server = 'http://www.alphastagestudios.com/apps/danmarksflyttemandapp/';//'http://danmarksflyttemand.dk/';
+
+function initContactFormHandler() {
+    $('#kontakt-send').on('click', function(evt) {
+        evt.preventDefault();
+
+        var mailData = "{'Company': " + $('#company_input').val() + ",'Name': " + $('#name_input').val() + ",'Address': " + $('#address_input').val() + ",'City': " + $('#zipcode_input').val() + ",'Email': " + $('#email_input').val() + ",'Telephone': " + $('#telephone_input').val() + ",'Subject': " + $('#subject_input').val() + ",'Message': " + $('#message_input').val() + "}";
+
+        $.ajax({
+            url: server + 'kontaktform-handler.aspx/SendEmail',
+            data: mailData,
+            type: 'POST',
+            success: function(data) {
+                $('#kontaktform').html('<h2>Din kontakt besked er sendt.</h2><p class="orange">Tak for din besked! Vi vender tilbage til dig snarest.</p>');
+            },
+            error: function(data, status, jqXHR) {
+                navigator.notification.alert('Fejl: ' + status);
+            }
+        });
+    });
+}
+
+/*
 var phpServer = 'http://rami_ahmed.0fees.net/htdocs/';
 
 function initContactFormHandler() {
@@ -79,9 +102,10 @@ function initTilbudFormHandler() {
         });
     });
 };
-
+*/
 function initFormHandler() {
     initContactFormHandler();
-    initTilbudFormHandler();
+ //   initTilbudFormHandler();
 };
+
 
