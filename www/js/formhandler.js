@@ -17,7 +17,7 @@ function initContactFormHandler() {
             contentType: "application/json; charset=utf-8",
             dataType: 'json',
             success: function(response) {
-                navigator.notification.alert('SUCCESS. response: ' + response.d);
+                navigator.notification.alert('SUCCESS. response: ' + response);
                 /*if (data.Equals("success") || data == "success") {
                     $('#kontaktform').html('<h2>Din kontakt besked er sendt.</h2><p class="orange">Tak for din besked! Vi vender tilbage til dig snarest.</p>');
                 }
@@ -27,7 +27,7 @@ function initContactFormHandler() {
             },
             error: function(response) {
                // navigator.notification.alert('Fejl: ' + data);
-               navigator.notification.alert('FAILURE. response: ' + response.d);
+               navigator.notification.alert('FAILURE. response: ' + response);
             }
         });
     });
