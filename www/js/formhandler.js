@@ -13,8 +13,11 @@ function initContactFormHandler() {
         $.ajax({
             url: server + 'kontaktform-handler.aspx/SendEmail',
             data: mailData,
+            dataType: 'json',
             type: 'POST',
-            success: function(data) {
+            success: function(msg) {
+                var data = $.parseJSON(msg.d);
+                navigator.notification.alert('msg: ' + msg + ', data:' + data + ', msg.d: ' + msg.d);
                 if (data.Equals("success") || data == "success") {
                     $('#kontaktform').html('<h2>Din kontakt besked er sendt.</h2><p class="orange">Tak for din besked! Vi vender tilbage til dig snarest.</p>');
                 }
