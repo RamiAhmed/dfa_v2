@@ -15,8 +15,9 @@ function initContactFormHandler() {
             url: server + 'ContactHandler.ashx',
             data: mailData,
             contentType: "application/json; charset=utf-8",
-            dataType: 'json',
-            success: function(r) {
+            dataType: 'text',
+            crossDomain: true,
+            success: function(r, textStatus, jqXHR) {
                 var data = r.responseText,
                     status = r.statusText;
 
@@ -28,12 +29,10 @@ function initContactFormHandler() {
                     navigator.notification.alert("Fejl: " + data);
                 }*/
             },
-            error: function(r) {
-                var data = r.responseText,
-                    status = r.statusText;
+            error: function(jqXHR, textStatus, errorThrown) {
 
                 // navigator.notification.alert('Fejl: ' + data);
-                navigator.notification.alert('FAILURE. response: ' + r.response + ', data: ' + data + ', status: ' + status);
+                navigator.notification.alert('FAILURE. textStatus: ' + textStatus + ', errorThrown: ' + errorThrown);
             }
         });
     });
