@@ -15,10 +15,15 @@ function initContactFormHandler() {
             data: mailData,
             type: 'POST',
             success: function(data) {
-                $('#kontaktform').html('<h2>Din kontakt besked er sendt.</h2><p class="orange">Tak for din besked! Vi vender tilbage til dig snarest.</p>');
+                if (data.Equals("success") || data == "success") {
+                    $('#kontaktform').html('<h2>Din kontakt besked er sendt.</h2><p class="orange">Tak for din besked! Vi vender tilbage til dig snarest.</p>');
+                }
+                else {
+                    navigator.notification.alert("Fejl: " + data);
+                }
             },
             error: function(data, status, jqXHR) {
-                navigator.notification.alert('Fejl: ' + status);
+                navigator.notification.alert('Fejl: ' + data);
             }
         });
     });
