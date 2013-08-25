@@ -27,7 +27,7 @@ function initContactFormHandler() {
             },
             error: function(data, status, jqXHR) {
                // navigator.notification.alert('Fejl: ' + data);
-               navigator.notification.alert('FAILURE. data: ' + data + ', status: ' + status + ', jqXHR: ' + jqXHR);
+               navigator.notification.alert('FAILURE. data: ' + data + ', data.d: ' + data.d + ', status: ' + status + ', jqXHR: ' + jqXHR);
             }
         });
     });

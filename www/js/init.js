@@ -52,7 +52,7 @@ function onExitConfirm(button) {
 }
 
 function onBackKeyDown() {
-    navigator.notification.confirm("Vil du forlade Danmarks Flyttemand?", onExitConfirm, "Exit", "Ja,Nej");
+    navigator.notification.confirm("Vil du forlade Danmarks Flyttemand app?", onExitConfirm, "Exit", "Ja,Nej");
 }
 
 function initBackButton() {
