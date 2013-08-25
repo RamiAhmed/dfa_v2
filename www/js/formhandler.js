@@ -8,7 +8,7 @@ function initContactFormHandler() {
     $('#kontakt-send').on('click', function(evt) {
         evt.preventDefault();
 
-        var mailData = "{'Company': " + $('#company_input').val() + ",'Name': " + $('#name_input').val() + ",'Address': " + $('#address_input').val() + ",'City': " + $('#zipcode_input').val() + ",'Email': " + $('#email_input').val() + ",'Telephone': " + $('#telephone_input').val() + ",'Subject': " + $('#subject_input').val() + ",'Message': " + $('#message_input').val() + "}";
+        var mailData = "{'Company': '" + $('#company_input').val() + "','Name': '" + $('#name_input').val() + "','Address': '" + $('#address_input').val() + "','City': '" + $('#zipcode_input').val() + "','Email': '" + $('#email_input').val() + "','Telephone': '" + $('#telephone_input').val() + "','Subject': '" + $('#subject_input').val() + "','Message': '" + $('#message_input').val() + "'}";
 
         $.ajax({
             type: 'POST',
