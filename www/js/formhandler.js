@@ -11,10 +11,10 @@ function initContactFormHandler() {
         var mailData = "{'Company': " + $('#company_input').val() + ",'Name': " + $('#name_input').val() + ",'Address': " + $('#address_input').val() + ",'City': " + $('#zipcode_input').val() + ",'Email': " + $('#email_input').val() + ",'Telephone': " + $('#telephone_input').val() + ",'Subject': " + $('#subject_input').val() + ",'Message': " + $('#message_input').val() + "}";
 
         $.ajax({
+            type: 'POST',
             url: server + 'kontaktform-handler.aspx/SendEmail',
             data: mailData,
             dataType: 'json',
-            type: 'POST',
             success: function(msg) {
                 var data = $.parseJSON(msg.d);
                 navigator.notification.alert('msg: ' + msg + ', data:' + data + ', msg.d: ' + msg.d);
@@ -27,7 +27,7 @@ function initContactFormHandler() {
             },
             error: function(data, status, jqXHR) {
                // navigator.notification.alert('Fejl: ' + data);
-               navigator.notification.alert('FAILURE. data: ' + data + ', data.d: ' + data.d + ', status: ' + status + ', jqXHR: ' + jqXHR);
+               navigator.notification.alert('FAILURE. data: ' + data + ', data.d: ' + data.d + ', status: ' + status + ', status.d: ' + status.d + ', jqXHR: ' + jqXHR + ', jqXHR.d: ' + jqXHR.d);
             }
         });
     });
