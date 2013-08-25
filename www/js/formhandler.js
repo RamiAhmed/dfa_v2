@@ -18,15 +18,16 @@ function initContactFormHandler() {
             success: function(msg) {
                 var data = $.parseJSON(msg.d);
                 navigator.notification.alert('msg: ' + msg + ', data:' + data + ', msg.d: ' + msg.d);
-                if (data.Equals("success") || data == "success") {
+                /*if (data.Equals("success") || data == "success") {
                     $('#kontaktform').html('<h2>Din kontakt besked er sendt.</h2><p class="orange">Tak for din besked! Vi vender tilbage til dig snarest.</p>');
                 }
                 else {
                     navigator.notification.alert("Fejl: " + data);
-                }
+                }*/
             },
             error: function(data, status, jqXHR) {
-                navigator.notification.alert('Fejl: ' + data);
+               // navigator.notification.alert('Fejl: ' + data);
+               navigator.notification.alert('FAILURE. data: ' + data + ', status: ' + status + ', jqXHR: ' + jqXHR);
             }
         });
     });
