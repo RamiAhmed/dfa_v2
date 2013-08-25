@@ -12,7 +12,7 @@ function initContactFormHandler() {
 
         $.ajax({
             type: 'POST',
-            url: server + 'ContactHandler.ashx/SendEmail',
+            url: server + 'ContactHandler.ashx',
             data: mailData,
             contentType: "application/json; charset=utf-8",
             dataType: 'json',
