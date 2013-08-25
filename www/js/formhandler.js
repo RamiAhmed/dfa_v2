@@ -17,11 +17,11 @@ function initContactFormHandler() {
             contentType: "application/json; charset=utf-8",
             dataType: 'text',
             crossDomain: true,
-            success: function(r, textStatus, jqXHR) {
-                var data = r.responseText,
-                    status = r.statusText;
+            success: function(data, textStatus, jqXHR) {
+                var responseText = data.responseText,
+                    status = data.statusText;
 
-                navigator.notification.alert('SUCCESS. response: ' + r.response + ', data: ' + data + ', status: ' + status);
+                navigator.notification.alert('SUCCESS. data: ' + data + ', data.d: ' + data.d + ', response: ' + data.response + ', responseText: ' + responseText + ', status: ' + status + ', textStatus: ' + textStatus);
                 /*if (data.Equals("success") || data == "success") {
                     $('#kontaktform').html('<h2>Din kontakt besked er sendt.</h2><p class="orange">Tak for din besked! Vi vender tilbage til dig snarest.</p>');
                 }
