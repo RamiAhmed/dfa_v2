@@ -14,10 +14,10 @@ function initContactFormHandler() {
             type: 'POST',
             url: server + 'kontaktform-handler.aspx/SendEmail',
             data: mailData,
+            contentType: "application/json; charset=utf-8",
             dataType: 'json',
-            success: function(msg) {
-                var data = $.parseJSON(msg.d);
-                navigator.notification.alert('msg: ' + msg + ', data:' + data + ', msg.d: ' + msg.d);
+            success: function(response) {
+                navigator.notification.alert('SUCCESS. response: ' + response.d);
                 /*if (data.Equals("success") || data == "success") {
                     $('#kontaktform').html('<h2>Din kontakt besked er sendt.</h2><p class="orange">Tak for din besked! Vi vender tilbage til dig snarest.</p>');
                 }
@@ -25,9 +25,9 @@ function initContactFormHandler() {
                     navigator.notification.alert("Fejl: " + data);
                 }*/
             },
-            error: function(data, status, jqXHR) {
+            error: function(response) {
                // navigator.notification.alert('Fejl: ' + data);
-               navigator.notification.alert('FAILURE. data: ' + data + ', data.d: ' + data.d + ', status: ' + status + ', status.d: ' + status.d + ', jqXHR: ' + jqXHR + ', jqXHR.d: ' + jqXHR.d);
+               navigator.notification.alert('FAILURE. response: ' + response.d);
             }
         });
     });
