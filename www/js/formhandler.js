@@ -21,7 +21,7 @@ function initContactFormHandler() {
                 var responseText = data.responseText,
                     status = data.statusText;
 
-                navigator.notification.alert('SUCCESS. data: ' + data + ', data.d: ' + data.d + ', response: ' + data.response + ', responseText: ' + responseText + ', status: ' + status + ', textStatus: ' + textStatus);
+                navigator.notification.alert('SUCCESS. data: ' + data + ', data.d: ' + data.d + ', response: ' + data.response + ', responseText: ' + responseText + ', status: ' + status + ', textStatus: ' + textStatus + ', data.results: ' + data.results + ', data.results[0]: ' + data.results[0]);
                 /*if (data.Equals("success") || data == "success") {
                     $('#kontaktform').html('<h2>Din kontakt besked er sendt.</h2><p class="orange">Tak for din besked! Vi vender tilbage til dig snarest.</p>');
                 }
