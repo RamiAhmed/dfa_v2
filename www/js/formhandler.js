@@ -16,6 +16,7 @@ function initContactFormHandler() {
             data: mailData,
             contentType: "application/json; charset=utf-8",
             dataType: 'JSON',
+            timeout: 5000,
             success: function(data, textStatus, jqXHR) {
                 navigator.notification.alert('SUCCESS. data.results: ' + data.results + ', data.results[0]: ' + data.results[0] + ', data.results[1]: ' + data.results[1]);
                 /*if (data.Equals("success") || data == "success") {
