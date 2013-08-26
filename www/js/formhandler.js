@@ -15,7 +15,7 @@ function initContactFormHandler() {
             url: server + 'ContactHandler.ashx',
             data: mailData,
             contentType: "application/json; charset=utf-8",
-            dataType: 'text',
+            dataType: 'JSON',
             crossDomain: true,
             success: function(data, textStatus, jqXHR) {
                 var responseText = data.responseText,
