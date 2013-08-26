@@ -16,12 +16,8 @@ function initContactFormHandler() {
             data: mailData,
             contentType: "application/json; charset=utf-8",
             dataType: 'JSON',
-            crossDomain: true,
             success: function(data, textStatus, jqXHR) {
-                var responseText = data.responseText,
-                    status = data.statusText;
-
-                navigator.notification.alert('SUCCESS. data: ' + data + ', data.d: ' + data.d + ', response: ' + data.response + ', responseText: ' + responseText + ', status: ' + status + ', textStatus: ' + textStatus + ', data.results: ' + data.results + ', data.results[0]: ' + data.results[0]);
+                navigator.notification.alert('SUCCESS. data.results: ' + data.results + ', data.results[0]: ' + data.results[0] + ', data.results[1]: ' + data.results[1]);
                 /*if (data.Equals("success") || data == "success") {
                     $('#kontaktform').html('<h2>Din kontakt besked er sendt.</h2><p class="orange">Tak for din besked! Vi vender tilbage til dig snarest.</p>');
                 }
