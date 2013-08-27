@@ -11,8 +11,8 @@ function initContactFormHandler() {
         var mailData = "{'Company': '" + $('#company_input').val() + "','Name': '" + $('#name_input').val() + "','Address': '" + $('#address_input').val() + "','City': '" + $('#zipcode_input').val() + "','Email': '" + $('#email_input').val() + "','Telephone': '" + $('#telephone_input').val() + "','Subject': '" + $('#subject_input').val() + "','Message': '" + $('#message_input').val() + "'}";
 
         $.ajax({
-            type: 'POST',
-            url: server + 'ContactFormHandler.ashx/SendMail',
+            type: "POST",
+            url: server + "ContactFormHandler.aspx/SendMail",
             data: mailData,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -25,8 +25,11 @@ function initContactFormHandler() {
     });
 }
 
-var onContactSuccess = function (data, textStatus) {
+var onContactSuccess = function (msg) {
+    navigator.notification.alert("SUCCESS. msg: " + msg + ", msg.d : " + msg.d);
+    /*
     navigator.notification.alert('SUCCESS. data.results: ' + data.results + ', data.results[0]: ' + data.results[0] + ', data.results[1]: ' + data.results[1] + ', data.d: ' + data.d + ', textStatus: ' + textStatus);
+    */
     /*if (data.Equals("success") || data == "success") {
         $('#kontaktform').html('<h2>Din kontakt besked er sendt.</h2><p class="orange">Tak for din besked! Vi vender tilbage til dig snarest.</p>');
     }
