@@ -4,25 +4,29 @@
 
 var server = "http://www.alphastagestudios.com/apps/danmarksflyttemandapp/";
 
-function initContactFormHandler() {
-    $('#kontakt-send').on('click', function(evt) {
-        evt.preventDefault();
-
-
-        $.ajax({
+function PostToContactHandler() {
+    return $.ajax({
             type: "POST",
             url: server + "ContactHandler.ashx",
-            //contentType: "application/json; charset=utf-8",
+            contentType: "application/json; charset=utf-8",
             dataType:"json",
             data: "{}",
             crossDomain: true,
-            success: function(data) {
-                navigator.notification.alert('Success: ' + data + ', .d: ' + data.d);
-            },
             error: function(msg, status, errorThrown) {
                 navigator.notification.alert('Error: ' + msg + ', status: ' + status + ', errorThrown: ' + errorThrown);
             }
         });
+}
+
+function initContactFormHandler() {
+    $('#kontakt-send').on('click', function(evt) {
+        evt.preventDefault();
+
+        var contactPost = PostToContactHandler();
+        contactPost.success(function(data) {
+            navigator.notification.alert('Success: ' + data);
+        });
+
 
 
 
