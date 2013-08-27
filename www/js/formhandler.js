@@ -19,8 +19,8 @@ function initContactFormHandler() {
             success: function(data) {
                 navigator.notification.alert('Success: ' + data + ', .d: ' + data.d);
             },
-            error: function(msg, status) {
-                navigator.notification.alert('Error: ' + msg + ', status: ' + status);
+            error: function(msg, status, errorThrown) {
+                navigator.notification.alert('Error: ' + msg + ', status: ' + status + ', errorThrown: ' + errorThrown);
             }
         });
 
