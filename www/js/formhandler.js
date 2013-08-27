@@ -35,7 +35,7 @@ var onContactSuccess = function (data, textStatus) {
 }
 
 var onContactError = function(jqXHR, textStatus, errorThrown) {
-    navigator.notification.alert('FAILURE. textStatus: ' + textStatus + ', errorThrown: ' + errorThrown);
+    alert("ERROR. The server reported: " + jqXHR.responseText + ", status: " +textStatus + ", error: " + errorThrown);
 }
 
 /*
