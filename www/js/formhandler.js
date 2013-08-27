@@ -10,15 +10,16 @@ function initContactFormHandler() {
 
 
         $.ajax({
-            'type':"POST",
-            'url': server + "ContactHandler.ashx",
-            //'contentType': "application/json; charset=utf-8",
-            'dataType':"json",
-            'data': "{}",
-            'success': function(data) {
+            type: "POST",
+            url: server + "ContactHandler.ashx",
+            //contentType: "application/json; charset=utf-8",
+            dataType:"json",
+            data: "{}",
+            crossDomain: true,
+            success: function(data) {
                 navigator.notification.alert('Success: ' + data + ', .d: ' + data.d);
             },
-            'error': function(data) {
+            error: function(data) {
                 navigator.notification.alert('Error: ' + data + ', .d: ' + data.d);
             }
         });
