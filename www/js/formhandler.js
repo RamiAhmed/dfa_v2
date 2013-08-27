@@ -14,25 +14,28 @@ function initContactFormHandler() {
             type: 'POST',
             url: server + 'ContactHandler.ashx',
             data: mailData,
-            contentType: "application/json; charset=utf-8",
-            dataType: 'JSON',
+            //contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: onContactSuccess,
+            error: onContactError,
             timeout: 5000,
-            success: function(data, textStatus, jqXHR) {
-                navigator.notification.alert('SUCCESS. data.results: ' + data.results + ', data.results[0]: ' + data.results[0] + ', data.results[1]: ' + data.results[1]);
-                /*if (data.Equals("success") || data == "success") {
-                    $('#kontaktform').html('<h2>Din kontakt besked er sendt.</h2><p class="orange">Tak for din besked! Vi vender tilbage til dig snarest.</p>');
-                }
-                else {
-                    navigator.notification.alert("Fejl: " + data);
-                }*/
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-
-                // navigator.notification.alert('Fejl: ' + data);
-                navigator.notification.alert('FAILURE. textStatus: ' + textStatus + ', errorThrown: ' + errorThrown);
-            }
+            cache: false
         });
     });
+}
+
+var onContactSuccess = function (data, textStatus) {
+    navigator.notification.alert('SUCCESS. data.results: ' + data.results + ', data.results[0]: ' + data.results[0] + ', data.results[1]: ' + data.results[1] + ', data.d: ' + data.d + ', textStatus: ' + textStatus);
+    /*if (data.Equals("success") || data == "success") {
+        $('#kontaktform').html('<h2>Din kontakt besked er sendt.</h2><p class="orange">Tak for din besked! Vi vender tilbage til dig snarest.</p>');
+    }
+    else {
+        navigator.notification.alert("Fejl: " + data);
+    }*/
+}
+
+var onContactError = function(jqXHR, textStatus, errorThrown) {
+    navigator.notification.alert('FAILURE. textStatus: ' + textStatus + ', errorThrown: ' + errorThrown);
 }
 
 /*
