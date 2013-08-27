@@ -2,12 +2,28 @@
     All Copyrights preserved.
 */
 
-var server = 'http://www.alphastagestudios.com/apps/danmarksflyttemandapp/';//'http://danmarksflyttemand.dk/';
+var server = "http://www.alphastagestudios.com/apps/danmarksflyttemandapp/";
 
 function initContactFormHandler() {
     $('#kontakt-send').on('click', function(evt) {
         evt.preventDefault();
 
+        var jsonResult = null;
+
+        $.ajax({
+            'type':"POST",
+            'url': server + "ContactHandler.ashx",
+            'contentType': "application/json; charset=utf-8",
+            'dataType':"json",
+            'data': "{}",
+            'success': function(data) {
+                jsonResult = data;
+            }
+        });
+
+        navigator.notification.alert('Received: ' + jsonResult);
+
+/*
         var mailData = "{'Company': '" + $('#company_input').val() + "','Name': '" + $('#name_input').val() + "','Address': '" + $('#address_input').val() + "','City': '" + $('#zipcode_input').val() + "','Email': '" + $('#email_input').val() + "','Telephone': '" + $('#telephone_input').val() + "','Subject': '" + $('#subject_input').val() + "','Message': '" + $('#message_input').val() + "'}";
 
         $.ajax({
@@ -22,6 +38,7 @@ function initContactFormHandler() {
             cache: false,
             async: false
         });
+*/
     });
 }
 
