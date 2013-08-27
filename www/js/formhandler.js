@@ -2,7 +2,8 @@
     All Copyrights preserved.
 */
 
-var server = 'http://www.alphastagestudios.com/apps/danmarksflyttemandapp/';//'http://danmarksflyttemand.dk/';
+//var server = 'http://www.alphastagestudios.com/apps/danmarksflyttemandapp/';//'http://danmarksflyttemand.dk/';
+var server = "http://www.danmarksflyttemand.dk/app/"
 
 function initContactFormHandler() {
     $('#kontakt-send').on('click', function(evt) {
@@ -12,7 +13,7 @@ function initContactFormHandler() {
 
         $.ajax({
             type: 'POST',
-            url: server + 'ContactHandler.ashx',
+            url: server + 'kontaktform-handler.aspx',//'ContactHandler.ashx',
             data: mailData,
             //contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -25,7 +26,7 @@ function initContactFormHandler() {
 }
 
 var onContactSuccess = function (data, textStatus) {
-    navigator.notification.alert('SUCCESS. data.results: ' + data.results + ', data.results[0]: ' + data.results[0] + ', data.results[1]: ' + data.results[1] + ', data.d: ' + data.d + ', textStatus: ' + textStatus);
+    navigator.notification.alert('SUCCESS. data: ' + data + ', data.results: ' + data.results + ', data.results[0]: ' + data.results[0] + ', data.results[1]: ' + data.results[1] + ', data.d: ' + data.d + ', textStatus: ' + textStatus);
     /*if (data.Equals("success") || data == "success") {
         $('#kontaktform').html('<h2>Din kontakt besked er sendt.</h2><p class="orange">Tak for din besked! Vi vender tilbage til dig snarest.</p>');
     }
