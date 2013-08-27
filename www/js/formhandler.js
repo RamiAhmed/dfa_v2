@@ -12,7 +12,7 @@ function initContactFormHandler() {
         $.ajax({
             'type':"POST",
             'url': server + "ContactHandler.ashx",
-            'contentType': "application/json; charset=utf-8",
+            //'contentType': "application/json; charset=utf-8",
             'dataType':"json",
             'data': "{}",
             'success': function(data) {
