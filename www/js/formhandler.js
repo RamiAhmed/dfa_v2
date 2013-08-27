@@ -16,7 +16,10 @@ function initContactFormHandler() {
             'dataType':"json",
             'data': "{}",
             'success': function(data) {
-                navigator.notification.alert('Received: ' + data + ', .d: ' + data.d);
+                navigator.notification.alert('Success: ' + data + ', .d: ' + data.d);
+            },
+            'error': function(data) {
+                navigator.notification.alert('Error: ' + data + ', .d: ' + data.d);
             }
         });
 

@@ -195,6 +195,6 @@ var onDeviceReady = function () {
     fireOnce = true;
     window.setTimeout(function () {
         $.ui.launch();
-    }, 1500);
+    }, 2000);
 };
 document.addEventListener("deviceready", onDeviceReady, false);
