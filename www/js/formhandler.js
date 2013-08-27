@@ -8,7 +8,6 @@ function initContactFormHandler() {
     $('#kontakt-send').on('click', function(evt) {
         evt.preventDefault();
 
-        var jsonResult = null;
 
         $.ajax({
             'type':"POST",
@@ -17,11 +16,11 @@ function initContactFormHandler() {
             'dataType':"json",
             'data': "{}",
             'success': function(data) {
-                jsonResult = data;
+                navigator.notification.alert('Received: ' + data + ', .d: ' + data.d);
             }
         });
 
-        navigator.notification.alert('Received: ' + jsonResult);
+
 
 /*
         var mailData = "{'Company': '" + $('#company_input').val() + "','Name': '" + $('#name_input').val() + "','Address': '" + $('#address_input').val() + "','City': '" + $('#zipcode_input').val() + "','Email': '" + $('#email_input').val() + "','Telephone': '" + $('#telephone_input').val() + "','Subject': '" + $('#subject_input').val() + "','Message': '" + $('#message_input').val() + "'}";
