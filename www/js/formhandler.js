@@ -5,17 +5,21 @@
 var server = "http://www.alphastagestudios.com/apps/danmarksflyttemandapp/";
 
 function PostToContactHandler(callback) {
-    return $.ajax({
+    var request = $.ajax({
         type: "POST",
         url: server + "ContactHandler.ashx",
         contentType: "application/json; charset=utf-8",
         dataType:"json",
         data: "{}",
-        crossDomain: true,
-        complete: callback,
-        error: function(msg, status, errorThrown) {
-            navigator.notification.alert('Error: ' + msg + ', status: ' + status + ', errorThrown: ' + errorThrown);
-        }
+        crossDomain: true
+    });
+
+    request.fail(function(jqXHR, textStatus, errorThrown) {
+        navigator.notification.alert('Error: ' + msg + ', status: ' + status + ', errorThrown: ' + errorThrown);
+    });
+
+    request.done(function(msg, status) {
+        callback(msg, status);
     });
 }
 
@@ -23,15 +27,17 @@ function initContactFormHandler() {
     $('#kontakt-send').on('click', function(evt) {
         evt.preventDefault();
 
-        var contactPost = PostToContactHandler(function(xhr, status) {
+        var onSuccess = function(msg, status) {
             if (status === 'error' || !xhr.responseText) {
-                navigator.notification.alert('Error status');
+                navigator.notification.alert('Error status: ' + status);
             }
             else {
                 var data = xhr.responseText;
                 navigator.notification.alert('Success: ' + data);
             }
-        });
+        };
+
+        var contactPost = PostToContactHandler(onSuccess);
 
 
 
