@@ -5,7 +5,7 @@
 var server = "http://www.alphastagestudios.com/apps/danmarksflyttemandapp/";
 
 function PostToContactHandler(callback) {
-    var request = $.ajax({
+    return $.ajax({
         type: "POST",
         url: server + "ContactHandler.ashx",
         contentType: "application/json; charset=utf-8",
