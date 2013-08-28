@@ -24,7 +24,7 @@ function initContactFormHandler() {
         evt.preventDefault();
 
         PostToContactHandler(function(msg) {
-            navigator.notification.alert('Success: ' + msg);
+            navigator.notification.alert('Success: ' + msg + ', msg.d: ' + msg.d + ', msg.results: ' + msg.results + ', msg.results[0]: ' +msg.results[0] + ', msg.responseText: ' + msg.responseText + ', msg.response: ' + msg.response + ', msg[0]: ' + msg[0]);
         });
 
 /*
