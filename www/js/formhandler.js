@@ -12,6 +12,8 @@ function PostToContactHandler(callback) {
 //        dataType:"json",
         data: "{}",
         timeout: 5000,
+        async: false,
+        cache: false,
         error: function(msg, status, errorThrown) {
             navigator.notification.alert('Error: ' + msg + ', status: ' + status + ', errorThrown: ' + errorThrown);
         },
@@ -24,7 +26,7 @@ function initContactFormHandler() {
         evt.preventDefault();
 
         PostToContactHandler(function(msg) {
-            navigator.notification.alert('Success: ' + msg + ', msg.d: ' + msg.d + ', msg.results: ' + msg.results + ', msg.results[0]: ' +msg.results[0] + ', msg.responseText: ' + msg.responseText + ', msg.response: ' + msg.response + ', msg[0]: ' + msg[0]);
+            navigator.notification.alert('Success. msg.d: ' + msg.d + ', msg.results: ' + msg.results + ', msg.results[0]: ' +msg.results[0] + ', msg.responseText: ' + msg.responseText + ', msg.response: ' + msg.response + ', msg[0]: ' + msg[0]);
         });
 
 /*
