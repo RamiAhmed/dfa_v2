@@ -12,7 +12,7 @@ function PostToContactHandler(callback) {
         dataType:"json",
         data: "{}",
         crossDomain: true,
-        success: callback,
+        complete: callback,
         error: function(msg, status, errorThrown) {
             navigator.notification.alert('Error: ' + msg + ', status: ' + status + ', errorThrown: ' + errorThrown);
         }
@@ -23,8 +23,14 @@ function initContactFormHandler() {
     $('#kontakt-send').on('click', function(evt) {
         evt.preventDefault();
 
-        var contactPost = PostToContactHandler(function(data) {
-            navigator.notification.alert('Success: ' + data);
+        var contactPost = PostToContactHandler(function(xhr, status) {
+            if (status === 'error' || !xhr.responseText) {
+                navigator.notification.alert('Error status');
+            }
+            else {
+                var data = xhr.responseText;
+                navigator.notification.alert('Success: ' + data);
+            }
         });
 
 
