@@ -9,7 +9,7 @@ function PostToContactHandler(callback) {
     $.ajax({
         type: "POST",
         url: server + "ContactHandler.ashx",
-        contentType: "application/json; charset=utf-8",
+//        contentType: "application/json; charset=utf-8",
 //        dataType:"json",
         data: "{}",
         timeout: 5000,
