@@ -18,16 +18,14 @@ function PostToContactHandler(callback) {
         navigator.notification.alert('Error: ' + msg + ', status: ' + status + ', errorThrown: ' + errorThrown);
     });
 
-    request.done(function(msg, status) {
-        callback(msg, status);
-    });
+    request.done(callback);
 }
 
 function initContactFormHandler() {
     $('#kontakt-send').on('click', function(evt) {
         evt.preventDefault();
 
-        var onSuccess = function(msg, status) {
+        var contactPost = PostToContactHandler(function(msg, status) {
             if (status === 'error' || !xhr.responseText) {
                 navigator.notification.alert('Error status: ' + status);
             }
@@ -35,9 +33,7 @@ function initContactFormHandler() {
                 var data = xhr.responseText;
                 navigator.notification.alert('Success: ' + data);
             }
-        };
-
-        var contactPost = PostToContactHandler(onSuccess);
+        });
 
 
 
