@@ -11,32 +11,21 @@ function PostToContactHandler(callback) {
         contentType: "application/json; charset=utf-8",
         dataType:"json",
         data: "{}",
-        crossDomain: true
+        timeout: 5000,
+        error: function(msg, status, errorThrown) {
+            navigator.notification.alert('Error: ' + msg + ', status: ' + status + ', errorThrown: ' + errorThrown);
+        },
+        success: callback
     });
-
-    request.fail(function(jqXHR, textStatus, errorThrown) {
-        navigator.notification.alert('Error: ' + msg + ', status: ' + status + ', errorThrown: ' + errorThrown);
-    });
-
-    request.done(callback);
 }
 
 function initContactFormHandler() {
     $('#kontakt-send').on('click', function(evt) {
         evt.preventDefault();
 
-        var contactPost = PostToContactHandler(function(msg, status) {
-            if (status === 'error' || !xhr.responseText) {
-                navigator.notification.alert('Error status: ' + status);
-            }
-            else {
-                var data = xhr.responseText;
-                navigator.notification.alert('Success: ' + data);
-            }
+        PostToContactHandler(function(msg) {
+            navigator.notification.alert('Success: ' + msg);
         });
-
-
-
 
 /*
         var mailData = "{'Company': '" + $('#company_input').val() + "','Name': '" + $('#name_input').val() + "','Address': '" + $('#address_input').val() + "','City': '" + $('#zipcode_input').val() + "','Email': '" + $('#email_input').val() + "','Telephone': '" + $('#telephone_input').val() + "','Subject': '" + $('#subject_input').val() + "','Message': '" + $('#message_input').val() + "'}";
