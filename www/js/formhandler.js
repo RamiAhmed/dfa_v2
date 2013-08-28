@@ -2,7 +2,8 @@
     All Copyrights preserved.
 */
 
-var server = "http://www.alphastagestudios.com/apps/danmarksflyttemandapp/";
+var server = "http://danmarksflyttemand.apphb.com/danmarksflyttemandapp/";
+//"http://www.alphastagestudios.com/apps/danmarksflyttemandapp/";
 
 function PostToContactHandler(callback) {
     $.ajax({
