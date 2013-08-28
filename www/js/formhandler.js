@@ -24,8 +24,8 @@ function initContactFormHandler() {
         evt.preventDefault();
 
         PostToContactHandler(function(msg) {
-            navigator.notification.alert('Success. msg.d: ' + msg.d);
-            navigator.notification.alert('msg.results: ' + msg.results);
+            //navigator.notification.alert('Success. msg.d: ' + msg.d);
+            //navigator.notification.alert('msg.results: ' + msg.results);
             navigator.notification.alert('msg.results[0]: ' + msg.results[0]);
             navigator.notification.alert('msg.responseText: ' + msg.responseText);
             navigator.notification.alert('msg.response: ' + msg.response);
