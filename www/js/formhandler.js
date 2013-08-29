@@ -96,7 +96,6 @@ function initContactFormHandler() {
             }
             else {
                 navigator.notification.alert('Fejl: ' + response);
-                return false;
             }
         });
     });
@@ -142,7 +141,6 @@ function initTilbudFormHandler() {
             }
             else {
                 navigator.notification.alert('Fejl: ' + response);
-                return false;
             }
         });
     });

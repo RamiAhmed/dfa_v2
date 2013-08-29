@@ -170,9 +170,14 @@
 function initMaps() {
     try {
         var mapOptions = {
-            zoom: 13,
+            zoom: 12,
             center: new google.maps.LatLng(55.689403, 12.521281),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            disableDefaultUI: true,
+            draggable: false,
+            scrollwheel: false,
+            disableDoubleClickZoom: true,
+            zoomControl: false
         };
         $('#googlemap').gmaps(mapOptions);
 
