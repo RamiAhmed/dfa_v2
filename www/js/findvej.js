@@ -109,7 +109,6 @@
                 map: mapsCache[elem.id],
                 title: 'Danmarks Flyttemand Kontor'
             });
-            mapsCache[elem.id].setCenter(officeMarker);
 
             if (userPos != null) {
                 addDirections(mapsCache[elem.id], userPos);
