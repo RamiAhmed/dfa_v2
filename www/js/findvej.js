@@ -109,19 +109,15 @@
                 map: mapsCache[elem.id],
                 title: 'Danmarks Flyttemand Kontor'
             });
-
             mapsCache[elem.id].setCenter(officeMarker);
-            var bounds = new google.maps.LatLngBounds();
-            bounds.extend(officeMarker);
-            mapsCache[elem.id].fitBounds(bounds);
 
             if (userPos != null) {
-                addDirections(mapsCache[elem.id], userPos, bounds);
+                addDirections(mapsCache[elem.id], userPos);
             }
             else {
                 $(document).one('gmaps:userpos', function() {
                     if (userPos != null) {
-                        addDirections(mapsCache[elem.id], userPos, bounds);
+                        addDirections(mapsCache[elem.id], userPos);
                     }
                     else {
                         navigator.notification.alert('Kan ikke finde din placering');
@@ -130,7 +126,7 @@
             }
         }
 
-        var addDirections = function(gmap, userPos, bounds) {
+        var addDirections = function(gmap, userPos) {
             var officePos = new google.maps.LatLng(55.648114, 12.506296);
             var userMarker = new google.maps.Marker({
                 icon: {
@@ -142,8 +138,6 @@
                 map: gmap,
                 title: 'Din placering'
             });
-
-            bounds.extend(userMarker);
 
             var directionsService = new google.maps.DirectionsService();
             var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
@@ -158,7 +152,6 @@
             directionsService.route(request, function(response, status) {
                 if (status == google.maps.DirectionsStatus.OK) {
                     directionsDisplay.setDirections(response);
-                    gmap.fitBounds(bounds);
                 }
             });
         }
