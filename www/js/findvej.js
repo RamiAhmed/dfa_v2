@@ -138,6 +138,12 @@
                 title: 'Din placering'
             });
 
+            var officeMarker = new google.maps.Marker({
+                position: officePos,
+                map: gmap,
+                title: 'Danmarks Flyttemand Kontor'
+            });
+
             var directionsService = new google.maps.DirectionsService();
             var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
             directionsDisplay.setMap(gmap);
