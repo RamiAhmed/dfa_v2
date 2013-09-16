@@ -2,75 +2,7 @@
     All Copyrights preserved.
 */
 
-var server = "http://danmarksflyttemand.apphb.com/danmarksflyttemandapp/";
-//"http://www.alphastagestudios.com/apps/danmarksflyttemandapp/";
-
-function PostToContactHandler(callback) {
-    $.ajax({
-        type: "POST",
-        url: server + "ContactHandler.ashx",
-//        contentType: "application/json; charset=utf-8",
-//        dataType:"json",
-        data: "{}",
-        timeout: 5000,
-        error: function(msg, status, errorThrown) {
-            navigator.notification.alert('Error: ' + msg + ', status: ' + status + ', errorThrown: ' + errorThrown);
-        },
-        success: callback
-    });
-}
-
-function initContactFormHandler() {
-    $('#kontakt-send').on('click', function(evt) {
-        evt.preventDefault();
-
-        PostToContactHandler(function(msg) {
-            //navigator.notification.alert('Success. msg.d: ' + msg.d);
-            //navigator.notification.alert('msg.results: ' + msg.results);
-            navigator.notification.alert('msg.results[0]: ' + msg.results[0]);
-            navigator.notification.alert('msg.responseText: ' + msg.responseText);
-            navigator.notification.alert('msg.response: ' + msg.response);
-            navigator.notification.alert('msg[0]: ' + msg[0]);
-        });
-
-/*
-        var mailData = "{'Company': '" + $('#company_input').val() + "','Name': '" + $('#name_input').val() + "','Address': '" + $('#address_input').val() + "','City': '" + $('#zipcode_input').val() + "','Email': '" + $('#email_input').val() + "','Telephone': '" + $('#telephone_input').val() + "','Subject': '" + $('#subject_input').val() + "','Message': '" + $('#message_input').val() + "'}";
-
-        $.ajax({
-            type: "POST",
-            url: server + "ContactFormHandler.aspx/SendMail",
-            data: "{}",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: onContactSuccess,
-            error: onContactError,
-            timeout: 5000,
-            cache: false,
-            async: false
-        });
-*/
-    });
-}
-
-var onContactSuccess = function (msg) {
-    navigator.notification.alert("SUCCESS. msg: " + msg + ", msg.d : " + msg.d);
-    /*
-    navigator.notification.alert('SUCCESS. data.results: ' + data.results + ', data.results[0]: ' + data.results[0] + ', data.results[1]: ' + data.results[1] + ', data.d: ' + data.d + ', textStatus: ' + textStatus);
-    */
-    /*if (data.Equals("success") || data == "success") {
-        $('#kontaktform').html('<h2>Din kontakt besked er sendt.</h2><p class="orange">Tak for din besked! Vi vender tilbage til dig snarest.</p>');
-    }
-    else {
-        navigator.notification.alert("Fejl: " + data);
-    }*/
-}
-
-var onContactError = function(jqXHR, textStatus, errorThrown) {
-    alert("ERROR. The server reported: " + jqXHR.responseText + ", status: " +textStatus + ", error: " + errorThrown);
-}
-
-/*
-var phpServer = 'http://rami_ahmed.0fees.net/htdocs/';
+var phpServer = "http://danmarksflyttemand.herokuapp.com/";
 
 function initContactFormHandler() {
     $('#kontakt-send').on('click', function(evt) {
@@ -145,10 +77,10 @@ function initTilbudFormHandler() {
         });
     });
 };
-*/
+
 function initFormHandler() {
     initContactFormHandler();
- //   initTilbudFormHandler();
+    initTilbudFormHandler();
 };
 
 
