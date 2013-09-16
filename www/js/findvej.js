@@ -94,7 +94,7 @@
     //This is a local object that gets created from the above.
     var gmaps = function (elem, opts) {
         var createMap = function () {
-            var officePos = new google.maps.LatLng(55.689403, 12.521281);
+            var officePos = new google.maps.LatLng(55.648114, 12.506296);
             if (!opts || Object.keys(opts).length == 0) {
                 opts = {
                     zoom: 13,
@@ -126,7 +126,7 @@
         }
 
         var addDirections = function(gmap, userPos) {
-            var officePos = new google.maps.LatLng(55.689403, 12.521281);
+            var officePos = new google.maps.LatLng(55.648114, 12.506296);
             var userMarker = new google.maps.Marker({
                 icon: {
                     path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
@@ -171,7 +171,7 @@ function initMaps() {
     try {
         var mapOptions = {
             zoom: 12,
-            center: new google.maps.LatLng(55.689403, 12.521281),
+            center: new google.maps.LatLng(55.648114, 12.506296),
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             disableDefaultUI: true,
             draggable: false,
@@ -190,7 +190,7 @@ function initMaps() {
         $('#googlepanelbutton').remove();
 
         var mapsUrl = 'http://maps.google.com/maps?';
-        mapsUrl += 'daddr=55.689403,12.521281';
+        mapsUrl += 'daddr=55.648114,12.506296';
         mapsUrl += '&zoom=13';
         mapsUrl += '&directionsmode=driving';
 
