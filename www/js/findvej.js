@@ -79,7 +79,7 @@
             var center = map.getCenter();
             google.maps.event.trigger(map, "resize");
             map.setCenter(center);
-            map.setZoom(13);
+            map.setZoom(12);
 
             return map;
         }
