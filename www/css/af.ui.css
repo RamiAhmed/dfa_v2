@@ -114,7 +114,7 @@ html, body {
     margin: 5% 5%;
     padding: 5px;
     width: 40%;
-    height: 35%;
+/*    height: auto; */
     display: inline-block;
     border: 1px solid #152735;
     border-radius: 15px;
